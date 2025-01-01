@@ -20,7 +20,7 @@ func main() {
 	prediction_endpoint := os.Getenv("VISION_PREDICTION_ENDPOINT")
 	prediction_resource_id := os.Getenv("VISION_PREDICTION_RESOURCE_ID")
 
-	project_name := "Go Sample Project"
+	project_name := "Tuong Go Development Project"
 	iteration_publish_name := "classifyModel"
 	sampleDataDirectory := "./../../assets/images"
 
