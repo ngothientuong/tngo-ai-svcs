@@ -151,7 +151,7 @@ func CreateTag(url, training_key string, params interface{}) (*Tag, error) {
 	headers := map[string]string{
 		"Training-Key": training_key,
 	}
-	resp, err := client.Post(url, params, headers, nil)
+	resp, err := client.Post(url, nil, headers, params)
 	if err != nil {
 		return nil, err
 	}
