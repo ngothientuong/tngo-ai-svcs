@@ -494,14 +494,12 @@ func TrainProject(url, training_key string, params interface{}) (*Iteration, err
 	return &iteration, nil
 }
 
-func GetIterations(url, training_key, projectId string) ([]Iteration, error) {
+func GetIterations(url, training_key string) ([]Iteration, error) {
 	client := httpclient.NewClient()
 	headers := map[string]string{
 		"Training-Key": training_key,
 	}
-	fullURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations", url, projectId)
-	fmt.Println("Requesting iterations from URL:", fullURL) // Debugging information
-	resp, err := client.Get(fullURL, headers, nil)
+	resp, err := client.Get(url, headers, nil)
 	if err != nil {
 		return nil, fmt.Errorf("failed to make request: %v", err)
 	}
@@ -540,14 +538,14 @@ func GetIteration(url, training_key string, params interface{}) (*Iteration, err
 	return &iteration, nil
 }
 
-func GetIterationLatest(url, training_key, projectId string) (*Iteration, error) {
-	iterations, err := GetIterations(url, training_key, projectId)
+func GetIterationLatest(url, training_key string) (*Iteration, error) {
+	iterations, err := GetIterations(url, training_key)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get iterations: %v", err)
 	}
 
 	if len(iterations) == 0 {
-		return nil, fmt.Errorf("no iterations found for project %s", projectId)
+		return nil, fmt.Errorf("no iterations found for url %s", url)
 	}
 
 	latestIteration := iterations[0]
@@ -570,13 +568,12 @@ func GetIterationLatest(url, training_key, projectId string) (*Iteration, error)
 	return &latestIteration, nil
 }
 
-func GetIterationPerformance(url, training_key, projectId, iterationId string, params map[string]interface{}) (*IterationPerformance, error) {
+func GetIterationPerformance(url, training_key string, params map[string]string) (*IterationPerformance, error) {
 	client := httpclient.NewClient()
 	headers := map[string]string{
 		"Training-Key": training_key,
 	}
-	fullURL := fmt.Sprintf("%s/%s/iterations/%s/performance", url, projectId, iterationId)
-	resp, err := client.Get(fullURL, headers, params)
+	resp, err := client.Get(url, headers, params)
 	if err != nil {
 		return nil, err
 	}
@@ -613,28 +610,42 @@ func PublishIteration(url, training_key string, params interface{}) error {
 	return nil
 }
 
-func QuickTestImage(url, training_key, sampleDataDirectory, imagePath string, params interface{}) (*ImagePrediction, error) {
+func QuickTestImage(url, training_key, sampleDataDirectory, imagePath string, params map[string]string) (*ImagePrediction, error) {
 	imageFile, err := os.ReadFile(path.Join(sampleDataDirectory, imagePath))
 	if err != nil {
 		return nil, fmt.Errorf("failed to read image file: %v", err)
 	}
 	body := &bytes.Buffer{}
 	writer := multipart.NewWriter(body)
-	part, _ := writer.CreateFormFile("imageData", "image.jpg")
-	part.Write(imageFile)
+	part, err := writer.CreateFormFile("imageData", "image.jpg")
+	if err != nil {
+		return nil, fmt.Errorf("failed to create form file: %v", err)
+	}
+	_, err = part.Write(imageFile)
+	if err != nil {
+		return nil, fmt.Errorf("failed to write image file to form: %v", err)
+	}
 	writer.Close()
 
+	client := httpclient.NewClient()
 	headers := map[string]string{
 		"Content-Type": writer.FormDataContentType(),
 		"Training-Key": training_key,
 	}
-
-	client := httpclient.NewClient()
 	resp, err := client.Post(url, body, headers, params)
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
+
+	// Debugging output
+	fmt.Printf("Uploading image to URL: %s\n", url)
+	fmt.Printf("Headers: %v\n", headers)
+
+	if resp.StatusCode != http.StatusOK {
+		responseBody, _ := io.ReadAll(resp.Body)
+		return nil, fmt.Errorf("failed to classify image: status code %d: %s - %s", resp.StatusCode, http.StatusText(resp.StatusCode), responseBody)
+	}
 
 	var results ImagePrediction
 	err = json.NewDecoder(resp.Body).Decode(&results)

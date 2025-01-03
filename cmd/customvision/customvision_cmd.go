@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"path"
+	"strings"
 	"time"
 
 	"github.com/ngothientuong/tngo-ai-svcs/internal/ai"
@@ -48,7 +49,8 @@ func main() {
 	}
 
 	// Check if the latest iteration exists
-	latestIteration, err := ai.GetIterationLatest(training_endpoint, training_key, project.ID.String())
+	iterationsURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations", training_endpoint, project.ID)
+	latestIteration, err := ai.GetIterationLatest(iterationsURL, training_key)
 	if err != nil {
 		log.Fatalf("failed to get latest iteration: %v", err)
 	}
@@ -139,17 +141,14 @@ func main() {
 	}
 	iteration, err := ai.TrainProject(trainURL, training_key, trainParams)
 	if err != nil {
-		if customVisionErr, ok := err.(*errorcustom.CustomVisionError); ok {
-			if customVisionErr.ErrorName == "BadRequestTrainingNotNeeded" {
-				fmt.Println("Training not needed.")
-				performance, err := ai.GetIterationLatest()
-			}
-
+		if customVisionErr, ok := err.(*errorcustom.CustomVisionError); ok && strings.Contains(customVisionErr.Message, "BadRequestTrainingNotNeeded") {
+			fmt.Println("Training not needed.")
 		} else {
 			log.Fatalf("failed to train project: %v", err)
 		}
 	}
 	if iteration != nil {
+		var iterationURL, performanceURL, iterPerformanceURL string
 		for {
 			if iteration.Status != "Training" {
 				break
@@ -163,51 +162,59 @@ func main() {
 			}
 		}
 		fmt.Println("Training status: " + iteration.Status)
-
 		// Retrieve the performance of the current iteration
-		performanceURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/performance", training_endpoint, project.ID, iteration.ID)
-		performance, err := ai.GetIterationPerformance(performanceURL, training_key, project.ID.String(), iteration.ID.String(), nil)
+		performanceURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/performance", training_endpoint, project.ID, iteration.ID)
+		performance, err := ai.GetIterationPerformance(performanceURL, training_key, nil)
 		if err != nil {
 			log.Fatalf("failed to get iteration performance: %v", err)
 		}
-	}
 
-	// Retrieve all iterations for the project
-	iterations, err := ai.GetIterations(training_endpoint, training_key, project.ID.String())
-	if err != nil {
-		log.Fatalf("failed to retrieve iterations: %v", err)
-	}
-
-	// Find the iteration with the highest precision
-	highestPrecision := 0.0
-	for _, iter := range iterations {
-		iterPerformanceURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/performance", training_endpoint, project.ID, iter.ID)
-		iterPerformance, err := ai.GetIterationPerformance(iterPerformanceURL, training_key, project.ID.String(), iter.ID.String(), nil)
+		// Retrieve all iterations for the project
+		iterations, err := ai.GetIterations(iterationURL, training_key)
 		if err != nil {
-			log.Fatalf("failed to get iteration performance: %v", err)
+			log.Fatalf("failed to retrieve iterations: %v", err)
 		}
-		if iterPerformance.Precision > highestPrecision {
-			highestPrecision = iterPerformance.Precision
+
+		// Find the iteration with the highest precision
+		highestPrecision := 0.0
+		for _, iter := range iterations {
+			iterPerformanceURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/performance", training_endpoint, project.ID, iter.ID)
+			iterPerformanceParams := map[string]string{"threshold": "0.5"}
+			iterPerformance, err := ai.GetIterationPerformance(iterPerformanceURL, training_key, iterPerformanceParams)
+			if err != nil {
+				log.Fatalf("failed to get iteration performance: %v", err)
+			}
+			if iterPerformance.Precision > highestPrecision {
+				highestPrecision = iterPerformance.Precision
+			}
+		}
+
+		// Publish the current iteration if it has the highest precision
+		if performance.Precision >= highestPrecision {
+			fmt.Println("Publishing iteration...")
+			publishURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/publish", training_endpoint, project.ID, iteration.ID)
+			publishParams := map[string]string{"publishName": iteration_publish_name, "predictionId": prediction_resource_id}
+			err = ai.PublishIteration(publishURL, training_key, publishParams)
+			if err != nil {
+				log.Fatalf("failed to publish iteration: %v", err)
+			}
+			fmt.Println("Iteration published.")
+		} else {
+			fmt.Println("Current iteration does not have the highest precision. Skipping publishing.")
 		}
 	}
+	var prediction_iteration_id string
 
-	// Publish the current iteration if it has the highest precision
-	if performance.Precision >= highestPrecision {
-		fmt.Println("Publishing iteration...")
-		publishURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/publish", training_endpoint, project.ID, iteration.ID)
-		publishParams := map[string]string{"publishName": iteration_publish_name, "predictionId": prediction_resource_id}
-		err = ai.PublishIteration(publishURL, training_key, publishParams)
-		if err != nil {
-			log.Fatalf("failed to publish iteration: %v", err)
-		}
-		fmt.Println("Iteration published.")
+	if iteration != nil {
+		prediction_iteration_id = iteration.ID.String()
 	} else {
-		fmt.Println("Current iteration does not have the highest precision. Skipping publishing.")
+		prediction_iteration_id = latestIteration.ID.String()
 	}
 
 	fmt.Println("Predicting...")
 	testImageURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/image", training_endpoint, project.ID)
-	results, err := ai.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/test_image.jpg", nil)
+	testImageURLParams := map[string]string{"iterationId": prediction_iteration_id}
+	results, err := ai.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/test_image.jpg", testImageURLParams)
 	if err != nil {
 		log.Fatalf("failed to classify image: %v", err)
 	}
