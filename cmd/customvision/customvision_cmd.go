@@ -226,7 +226,7 @@ func main() {
 	fmt.Println("Predicting with URL...")
 	testImageUrl := "https://mortonarb.org/app/uploads/2020/12/Japanese-Flowering-Cherry_5144776054_ac5340eb34_o-1920x1440-c-default.jpg"
 	testImageUrlEndpoint := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/url", training_endpoint, project.ID)
-	results, err = ai.QuickTestImageUrl(testImageUrlEndpoint, training_key, testImageUrl, nil)
+	results, err = ai.QuickTestImageUrl(testImageUrlEndpoint, training_key, testImageUrl, testImageURLParams)
 	if err != nil {
 		log.Fatalf("failed to classify image from URL: %v", err)
 	}
