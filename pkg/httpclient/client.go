@@ -101,7 +101,7 @@ func (c *Client) Post(urlStr string, payload interface{}, headers map[string]str
 		return nil, err
 	}
 
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusAccepted {
 		errorName, exists := errorcustom.ErrorNames[resp.StatusCode]
 		if !exists {
 			errorName = "UnknownError"
@@ -175,6 +175,10 @@ func (c *Client) Get(urlStr string, headers map[string]string, params interface{
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
+	}
+
+	if resp.StatusCode == http.StatusNotFound {
+		return resp, nil
 	}
 
 	if resp.StatusCode != http.StatusOK {
@@ -322,7 +326,7 @@ func (c *Client) Put(urlStr string, payload interface{}, headers map[string]stri
 		return nil, err
 	}
 
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusAccepted {
 		errorName, exists := errorcustom.ErrorNames[resp.StatusCode]
 		if !exists {
 			errorName = "UnknownError"
@@ -421,7 +425,7 @@ func (c *Client) Patch(urlStr string, payload interface{}, headers map[string]st
 		return nil, err
 	}
 
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusAccepted {
 		errorName, exists := errorcustom.ErrorNames[resp.StatusCode]
 		if !exists {
 			errorName = "UnknownError"
