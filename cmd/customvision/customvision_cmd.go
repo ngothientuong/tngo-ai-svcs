@@ -21,6 +21,7 @@ func main() {
 	prediction_key := os.Getenv("VISION_PREDICTION_KEY")
 	prediction_endpoint := os.Getenv("VISION_PREDICTION_ENDPOINT")
 	prediction_resource_id := os.Getenv("VISION_PREDICTION_RESOURCE_ID")
+	apiVersion := os.Getenv("VISION_TRAINING_API_VERSION")
 
 	project_name := "Tuong Go Development Project"
 	iteration_publish_name := "classifyModel"
@@ -33,7 +34,7 @@ func main() {
 
 	fmt.Println("Checking if project exists...")
 
-	projectURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects", training_endpoint)
+	projectURL := fmt.Sprintf("%s/customvision/%s/training/projects", training_endpoint, apiVersion)
 	project, err := customvision.GetProjectByName(projectURL, training_key, project_name)
 	if err != nil {
 		fmt.Println("Project not found, creating new project...")
@@ -50,7 +51,7 @@ func main() {
 	}
 
 	// Check if the latest iteration exists
-	iterationsURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations", training_endpoint, project.ID)
+	iterationsURL := fmt.Sprintf("%s/customvision/%s/training/projects/%s/iterations", training_endpoint, apiVersion, project.ID)
 	latestIteration, err := customvision.GetIterationLatest(iterationsURL, training_key)
 	if err != nil {
 		log.Fatalf("failed to get latest iteration: %v", err)
@@ -67,7 +68,7 @@ func main() {
 	}
 
 	// Check if the Hemlock tag exists
-	tagURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/tags", training_endpoint, project.ID)
+	tagURL := fmt.Sprintf("%s/customvision/%s/training/projects/%s/tags", training_endpoint, apiVersion, project.ID)
 	hemlockTag, err := customvision.GetTagByName(tagURL, training_key, project.ID.String(), "Hemlock", iterationID)
 	if err != nil {
 		fmt.Printf("Hemlock tag not found, creating new tag... Error: %v\n", err)
@@ -121,7 +122,7 @@ func main() {
 		}
 		hemlockImageFiles = append(hemlockImageFiles, imageFile)
 	}
-	uploadImagesURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/images", training_endpoint, project.ID)
+	uploadImagesURL := fmt.Sprintf("%s/customvision/%s/training/projects/%s/images", training_endpoint, apiVersion, project.ID)
 	summary, err := customvision.CreateImagesFromData(uploadImagesURL, training_key, hemlockImageFiles, hemlockTag.ID)
 	if err != nil {
 		log.Fatalf("failed to upload images: %v", err)
@@ -141,7 +142,7 @@ func main() {
 		}
 		japaneseCherryImageFiles = append(japaneseCherryImageFiles, imageFile)
 	}
-	uploadImagesURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/images", training_endpoint, project.ID)
+	uploadImagesURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/images", training_endpoint, apiVersion, project.ID)
 	summary, err = customvision.CreateImagesFromData(uploadImagesURL, training_key, japaneseCherryImageFiles, cherryTag.ID)
 	if err != nil {
 		log.Fatalf("failed to upload images: %v", err)
@@ -161,7 +162,7 @@ func main() {
 		}
 		dandelionImageFiles = append(dandelionImageFiles, imageFile)
 	}
-	uploadImagesURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/images", training_endpoint, project.ID)
+	uploadImagesURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/images", training_endpoint, apiVersion, project.ID)
 	summary, err = customvision.CreateImagesFromData(uploadImagesURL, training_key, dandelionImageFiles, dandelionTag.ID)
 	if err != nil {
 		log.Fatalf("failed to upload images: %v", err)
@@ -169,7 +170,7 @@ func main() {
 	fmt.Printf("Dandelion images upload summary: %+v\n", summary)
 
 	fmt.Println("Training...")
-	trainURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/train", training_endpoint, project.ID)
+	trainURL := fmt.Sprintf("%s/customvision/%s/training/projects/%s/train", training_endpoint, apiVersion, project.ID)
 	trainParams := map[string]string{
 		"notificationEmailAddress": "tuongdevops1@gmail.com",
 	}
@@ -189,7 +190,7 @@ func main() {
 			}
 			fmt.Println("Training status: " + iteration.Status)
 			time.Sleep(1 * time.Second)
-			iterationURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s", training_endpoint, project.ID, iteration.ID)
+			iterationURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/iterations/%s", training_endpoint, apiVersion, project.ID, iteration.ID)
 			iteration, err = customvision.GetIteration(iterationURL, training_key, nil)
 			if err != nil {
 				log.Fatalf("failed to get iteration: %v", err)
@@ -197,14 +198,14 @@ func main() {
 		}
 		fmt.Println("Training status: " + iteration.Status)
 		// Retrieve the performance of the current iteration
-		performanceURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/performance", training_endpoint, project.ID, iteration.ID)
+		performanceURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/iterations/%s/performance", training_endpoint, apiVersion, project.ID, iteration.ID)
 		performance, err := customvision.GetIterationPerformance(performanceURL, training_key, nil)
 		if err != nil {
 			log.Fatalf("failed to get iteration performance: %v", err)
 		}
 
 		// Retrieve all iterations for the project
-		iterationURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations", training_endpoint, project.ID)
+		iterationURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/iterations", training_endpoint, apiVersion, project.ID)
 		iterations, err := customvision.GetIterations(iterationURL, training_key)
 		if err != nil {
 			log.Fatalf("failed to retrieve iterations: %v", err)
@@ -214,7 +215,7 @@ func main() {
 		// Find the iteration with the highest precision
 		highestPrecision := 0.0
 		for _, iter := range iterations {
-			iterPerformanceURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/a5561243-2401-48f6-a695-eb014f17c1fb/iterations/%s/performance", training_endpoint, iter.ID)
+			iterPerformanceURL = fmt.Sprintf("%s/customvision/%s/training/projects/a5561243-2401-48f6-a695-eb014f17c1fb/iterations/%s/performance", training_endpoint, apiVersion, iter.ID)
 			iterPerformanceParams := map[string]string{"threshold": "0.5"}
 			iterPerformance, err := customvision.GetIterationPerformance(iterPerformanceURL, training_key, iterPerformanceParams)
 			if err != nil {
@@ -228,7 +229,7 @@ func main() {
 		// Publish the current iteration if it has the highest precision
 		if performance.Precision >= highestPrecision {
 			fmt.Println("Publishing iteration...")
-			publishURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/iterations/%s/publish", training_endpoint, project.ID, iteration.ID)
+			publishURL := fmt.Sprintf("%s/customvision/%s/training/projects/%s/iterations/%s/publish", training_endpoint, apiVersion, project.ID, iteration.ID)
 			publishParams := map[string]string{"publishName": iteration_publish_name + "-" + iteration.ID.String(), "predictionId": prediction_resource_id}
 			err = customvision.PublishIteration(publishURL, training_key, publishParams)
 			if err != nil {
@@ -248,7 +249,7 @@ func main() {
 
 	fmt.Println("Predicting...")
 	fmt.Println("Predicting with image HelmLock...")
-	testImageURL := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/image", training_endpoint, project.ID)
+	testImageURL := fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/image", training_endpoint, apiVersion, project.ID)
 	testImageURLParams := map[string]string{"iterationId": prediction_iteration_id}
 	results, err := customvision.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/hemlocktest1.jpg", testImageURLParams)
 	if err != nil {
@@ -259,7 +260,7 @@ func main() {
 		fmt.Printf("%s: %.2f%%\n", prediction.TagName, prediction.Probability*100)
 	}
 
-	testImageURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/image", training_endpoint, project.ID)
+	testImageURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/image", training_endpoint, apiVersion, project.ID)
 	testImageURLParams = map[string]string{"iterationId": prediction_iteration_id}
 	results, err = customvision.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/hemlocktest2.jpg", testImageURLParams)
 	if err != nil {
@@ -271,7 +272,7 @@ func main() {
 	}
 
 	fmt.Println("Predicting with image Dandelion...")
-	testImageURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/image", training_endpoint, project.ID)
+	testImageURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/image", training_endpoint, apiVersion, project.ID)
 	testImageURLParams = map[string]string{"iterationId": prediction_iteration_id}
 	results, err = customvision.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/dandeliontest1.jpg", testImageURLParams)
 	if err != nil {
@@ -283,7 +284,7 @@ func main() {
 	}
 
 	fmt.Println("Predicting with image Japanese Cherry...")
-	testImageURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/image", training_endpoint, project.ID)
+	testImageURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/image", training_endpoint, apiVersion, project.ID)
 	testImageURLParams = map[string]string{"iterationId": prediction_iteration_id}
 	results, err = customvision.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/japanesecherry2.jpg", testImageURLParams)
 	if err != nil {
@@ -294,7 +295,7 @@ func main() {
 		fmt.Printf("%s: %.2f%%\n", prediction.TagName, prediction.Probability*100)
 	}
 
-	testImageURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/image", training_endpoint, project.ID)
+	testImageURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/image", training_endpoint, apiVersion, project.ID)
 	testImageURLParams = map[string]string{"iterationId": prediction_iteration_id}
 	results, err = customvision.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/japanesecherry3.jpg", testImageURLParams)
 	if err != nil {
@@ -305,7 +306,7 @@ func main() {
 		fmt.Printf("%s: %.2f%%\n", prediction.TagName, prediction.Probability*100)
 	}
 
-	testImageURL = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/image", training_endpoint, project.ID)
+	testImageURL = fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/image", training_endpoint, apiVersion, project.ID)
 	testImageURLParams = map[string]string{"iterationId": prediction_iteration_id}
 	results, err = customvision.QuickTestImage(testImageURL, training_key, sampleDataDirectory, "Test/japanesecherry1.jpg", testImageURLParams)
 	if err != nil {
@@ -319,7 +320,7 @@ func main() {
 	fmt.Println("Predicting with URL...")
 	fmt.Println("Predicting with image Cherry...")
 	testImageUrl := "https://www.datocms-assets.com/101439/1700918559-cherry-blossom-at-hirosaki-park.jpg?auto=format&h=1000&w=2000"
-	testImageUrlEndpoint := fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/url", training_endpoint, project.ID)
+	testImageUrlEndpoint := fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/url", training_endpoint, apiVersion, project.ID)
 	results, err = customvision.QuickTestImageUrl(testImageUrlEndpoint, training_key, testImageUrl, testImageURLParams)
 	if err != nil {
 		log.Fatalf("failed to classify image from URL: %v", err)
@@ -331,7 +332,7 @@ func main() {
 
 	fmt.Println("Predicting with image Dandelion...")
 	testImageUrl = "https://myfavouritepastime.com/wp-content/uploads/2018/10/img_2927.jpg"
-	testImageUrlEndpoint = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/url", training_endpoint, project.ID)
+	testImageUrlEndpoint = fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/url", training_endpoint, apiVersion, project.ID)
 	results, err = customvision.QuickTestImageUrl(testImageUrlEndpoint, training_key, testImageUrl, testImageURLParams)
 	if err != nil {
 		log.Fatalf("failed to classify image from URL: %v", err)
@@ -343,7 +344,7 @@ func main() {
 
 	fmt.Println("Predicting with image Hemlock...")
 	testImageUrl = "https://d18lev1ok5leia.cloudfront.net/chesapeakebay/critters/_700x600_fit_center-center_none/Eastern-Hemlock-20180420-IMG_5309.jpg"
-	testImageUrlEndpoint = fmt.Sprintf("%s/customvision/v3.4-preview/training/projects/%s/quicktest/url", training_endpoint, project.ID)
+	testImageUrlEndpoint = fmt.Sprintf("%s/customvision/%s/training/projects/%s/quicktest/url", training_endpoint, apiVersion, project.ID)
 	results, err = customvision.QuickTestImageUrl(testImageUrlEndpoint, training_key, testImageUrl, testImageURLParams)
 	if err != nil {
 		log.Fatalf("failed to classify image from URL: %v", err)
