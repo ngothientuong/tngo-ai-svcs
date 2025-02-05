@@ -72,7 +72,7 @@ type StringFilter struct {
 }
 
 type SearchResponse struct {
-	Results []SearchResult `json:"results"`
+	Value []SearchResult `json:"value"`
 }
 
 type SearchResult struct {
@@ -150,6 +150,30 @@ func CheckIndexExists(url, subscriptionKey string) (bool, error) {
 	}
 }
 
+func GetIndex(url, subscriptionKey string) (*Index, error) {
+	client := httpclient.NewClient()
+	headers := map[string]string{
+		"Ocp-Apim-Subscription-Key": subscriptionKey,
+	}
+	resp, err := client.Get(url, headers, nil)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("failed to get index: %s", resp.Status)
+	}
+
+	var index Index
+	err = json.NewDecoder(resp.Body).Decode(&index)
+	if err != nil {
+		return nil, err
+	}
+
+	return &index, nil
+}
+
 func CheckIngestionExists(url, subscriptionKey string) (bool, error) {
 	client := httpclient.NewClient()
 	headers := map[string]string{
@@ -206,6 +230,41 @@ func CreateIngestion(url, subscriptionKey string, params interface{}) (*Ingestio
 	return &ingestion, nil
 }
 
+func UpdateIngestion(url, subscriptionKey string, params interface{}) (*Ingestion, error) {
+	client := httpclient.NewClient()
+	headers := map[string]string{
+		"Ocp-Apim-Subscription-Key": subscriptionKey,
+		"Content-Type":              "application/json",
+	}
+
+	// Convert params to JSON
+	jsonParams, err := json.Marshal(params)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal params: %v", err)
+	}
+
+	resp, err := client.Patch(url, bytes.NewBuffer(jsonParams), headers, nil)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	responseBody, _ := io.ReadAll(resp.Body)
+	fmt.Printf("Ingestion update response: %s\n", responseBody)
+
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusAccepted {
+		return nil, fmt.Errorf("failed to update ingestion: %s", resp.Status)
+	}
+
+	var ingestion Ingestion
+	err = json.NewDecoder(bytes.NewBuffer(responseBody)).Decode(&ingestion)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode response: %v, response: %s", err, responseBody)
+	}
+
+	return &ingestion, nil
+}
+
 func GetIngestionStatus(url, subscriptionKey string) (*Ingestion, error) {
 	client := httpclient.NewClient()
 	headers := map[string]string{
@@ -228,6 +287,72 @@ func GetIngestionStatus(url, subscriptionKey string) (*Ingestion, error) {
 	}
 
 	return &ingestion, nil
+}
+
+func ListIngestions(url, subscriptionKey string) ([]Ingestion, error) {
+	client := httpclient.NewClient()
+	headers := map[string]string{
+		"Ocp-Apim-Subscription-Key": subscriptionKey,
+	}
+	resp, err := client.Get(url, headers, nil)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("failed to list ingestions: %s", resp.Status)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read response body: %v", err)
+	}
+
+	fmt.Printf("Response body: %s\n", body)
+
+	var result struct {
+		Value []Ingestion `json:"value"`
+	}
+	err = json.NewDecoder(bytes.NewBuffer(body)).Decode(&result)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode response: %v", err)
+	}
+
+	return result.Value, nil
+}
+
+func ListDocuments(url, subscriptionKey string) ([]IngestionDocument, error) {
+	client := httpclient.NewClient()
+	headers := map[string]string{
+		"Ocp-Apim-Subscription-Key": subscriptionKey,
+	}
+	resp, err := client.Get(url, headers, nil)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("failed to list documents: %s", resp.Status)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read response body: %v", err)
+	}
+
+	fmt.Printf("Response body: %s\n", body)
+
+	var result struct {
+		Value []IngestionDocument `json:"value"`
+	}
+	err = json.NewDecoder(bytes.NewBuffer(body)).Decode(&result)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode response: %v", err)
+	}
+
+	return result.Value, nil
 }
 
 func SearchByText(url, subscriptionKey string, params interface{}) (*SearchResponse, error) {
@@ -253,8 +378,16 @@ func SearchByText(url, subscriptionKey string, params interface{}) (*SearchRespo
 		return nil, fmt.Errorf("failed to search by text: %s", resp.Status)
 	}
 
+	// Read response raw body
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read response body: %v", err)
+	}
+
+	fmt.Printf("Response body: %s\n", body)
+
 	var result SearchResponse
-	err = json.NewDecoder(resp.Body).Decode(&result)
+	err = json.NewDecoder(bytes.NewBuffer(body)).Decode(&result)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode response: %v", err)
 	}
