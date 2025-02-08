@@ -26,3 +26,6 @@ go.work.sum
 
 # local settings
 .vscode/
+
+# Temporary files
+tmp/

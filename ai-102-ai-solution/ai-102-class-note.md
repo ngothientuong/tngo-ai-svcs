@@ -237,8 +237,57 @@ Reference: https://contentsafety.cognitive.azure.com
 
 ## Key Phrase Extraction
 
+- [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
+
 - Identifies the main concepts and phrases from text, providing insights into its primary themes and topics
 - 3 ways to use:
   - Language Studio
   - REST API
   - Container
+
+- The more text provided, the better extraction of key phases such as topics, themes, etc...
+- Use `key phrase extraction` to quickly identify the main concepts in text. For example, in the text "The food was delicious and the staff were wonderful.", `key phrase extraction` will return the main topics: "food" and "wonderful staff".
+
+## Entity linking
+
+- [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
+
+- `Entity linking` identifies and disambiguates the identity of entities found in text. For example, in the sentence "We went to Seattle last week.", the word "Seattle" would be identified, with a link to more information on Wikipedia.
+
+## Named Entity Recognition (NER)
+
+- [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
+
+- The `NER` feature can identify and categorize entities in unstructured text.
+- **For example**: people, places, organizations, and quantities. The prebuilt NER feature has a pre-set list of recognized entities. The custom NER feature allows you to train the model to recognize specialized entities specific to your use case.
+
+## Text Analytics for Health
+
+- [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
+
+- `Text Analytics for health` is a cloud-based API service that applies machine-learning intelligence to extract and label relevant medical information from a variety of unstructured texts such as doctor's notes, discharge summaries, clinical documents, and electronic health records.
+- **Usage scenarios**:
+  - Assisting and automating the processing of medical documents by proper medical coding to ensure accurate care and billing.
+  - Increasing the efficiency of analyzing healthcare data to help drive the success of value-based care models similar to Medicare.
+  - Minimizing healthcare provider effort by automating the aggregation of key patient data for trend and pattern monitoring.
+  - Facilitating and supporting the adoption of HL7 standards for improved exchange, integration, sharing, retrieval, and delivery of electronic health information in all healthcare services.
+
+## Custom Named Entity Recognition (NER)
+
+- [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
+
+- `Custom NER` is a cloud-based API service that applies machine-learning intelligence to enable you to build custom models for custom named entity recognition tasks.
+- `Custom NER` enables users to build custom AI models to extract domain-specific entities from unstructured text, such as contracts or financial documents.
+- By creating a `Custom NER project`, developers can iteratively label data, train, evaluate, and improve model performance before making it available for consumption. The quality of the labeled data greatly impacts model performance.
+- To simplify building and customizing your model, the service offers a custom web portal that can be accessed through the Language studio.
+- **Example usage scenarios**:
+  - **Information extraction**: Automate data extraction from complex, unstructured text sources like bank statements and legal agreements.
+  - **Knowledge mining**: Enhance search experiences by extracting relevant entities from text to enrich indexing.
+  - **Audit and compliance**: Automate the review of long text files to enforce compliance policies and set up business rules.
+- **Project development lifecycle**:
+  - Define your schema: Identify the entities you want extracted.
+  - Label your data: Label precisely, consistently, and completely.
+  - Train the model: Your model learns from your labeled data.
+  - View the model's performance: Evaluate and improve the model.
+  - Deploy the model: Make it available for use via the Analyze API.
+  - Extract entities: Use your custom models for entity extraction tasks.

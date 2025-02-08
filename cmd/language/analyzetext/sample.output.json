@@ -1,0 +1,1986 @@
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for EntityLinking:
+{
+  "results": {
+    "documents": [
+      {
+        "entities": [
+          {
+            "bingId": "a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
+            "dataSource": "Wikipedia",
+            "id": "Microsoft",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.35,
+                "length": 9,
+                "offset": 52,
+                "text": "Microsoft"
+              },
+              {
+                "confidenceScore": 0.35,
+                "length": 9,
+                "offset": 483,
+                "text": "Microsoft"
+              },
+              {
+                "confidenceScore": 0.35,
+                "length": 9,
+                "offset": 0,
+                "text": "Microsoft"
+              }
+            ],
+            "name": "Microsoft",
+            "url": "https://en.wikipedia.org/wiki/Microsoft"
+          },
+          {
+            "bingId": "0d47c987-0042-5576-15e8-97af601614fa",
+            "dataSource": "Wikipedia",
+            "id": "Bill Gates",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.57,
+                "length": 10,
+                "offset": 25,
+                "text": "Bill Gates"
+              }
+            ],
+            "name": "Bill Gates",
+            "url": "https://en.wikipedia.org/wiki/Bill_Gates"
+          },
+          {
+            "bingId": "df2c4376-9923-6a54-893f-2ee5a5badbc7",
+            "dataSource": "Wikipedia",
+            "id": "Paul Allen",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.58,
+                "length": 10,
+                "offset": 40,
+                "text": "Paul Allen"
+              }
+            ],
+            "name": "Paul Allen",
+            "url": "https://en.wikipedia.org/wiki/Paul_Allen"
+          },
+          {
+            "bingId": "16aeb6d9-9098-0a40-4970-8e46a4fcee12",
+            "dataSource": "Wikipedia",
+            "id": "Microsoft Windows",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.95,
+                "length": 17,
+                "offset": 229,
+                "text": "Microsoft Windows"
+              }
+            ],
+            "name": "Microsoft Windows",
+            "url": "https://en.wikipedia.org/wiki/Microsoft_Windows"
+          },
+          {
+            "bingId": "b6c6d65c-4f80-60fb-2799-08ad9229faf7",
+            "dataSource": "Wikipedia",
+            "id": "Microsoft Office",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.93,
+                "length": 16,
+                "offset": 278,
+                "text": "Microsoft Office"
+              }
+            ],
+            "name": "Microsoft Office",
+            "url": "https://en.wikipedia.org/wiki/Microsoft_Office"
+          },
+          {
+            "bingId": "15d85dba-6a04-1327-2f84-1589b6b310b8",
+            "dataSource": "Wikipedia",
+            "id": "Internet Explorer",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.32,
+                "length": 17,
+                "offset": 310,
+                "text": "Internet Explorer"
+              }
+            ],
+            "name": "Internet Explorer",
+            "url": "https://en.wikipedia.org/wiki/Internet_Explorer"
+          },
+          {
+            "bingId": "46724816-656d-4985-947c-985664327930",
+            "dataSource": "Wikipedia",
+            "id": "Microsoft Edge",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.26,
+                "length": 4,
+                "offset": 332,
+                "text": "Edge"
+              }
+            ],
+            "name": "Microsoft Edge",
+            "url": "https://en.wikipedia.org/wiki/Microsoft_Edge"
+          },
+          {
+            "bingId": "e9aebe4e-60f9-48f4-957a-2cdf0ecc1a46",
+            "dataSource": "Wikipedia",
+            "id": "Xbox (console)",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.09,
+                "length": 4,
+                "offset": 390,
+                "text": "Xbox"
+              }
+            ],
+            "name": "Xbox (console)",
+            "url": "https://en.wikipedia.org/wiki/Xbox_(console)"
+          },
+          {
+            "bingId": "d3cf09a9-76dd-973e-2179-47f7f24c5e37",
+            "dataSource": "Wikipedia",
+            "id": "Microsoft Surface",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.44,
+                "length": 17,
+                "offset": 423,
+                "text": "Microsoft Surface"
+              }
+            ],
+            "name": "Microsoft Surface",
+            "url": "https://en.wikipedia.org/wiki/Microsoft_Surface"
+          },
+          {
+            "bingId": "7125533d-dc80-4728-892d-1adbe0032065",
+            "dataSource": "Wikipedia",
+            "id": "Fortune 500",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.86,
+                "length": 11,
+                "offset": 519,
+                "text": "Fortune 500"
+              }
+            ],
+            "name": "Fortune 500",
+            "url": "https://en.wikipedia.org/wiki/Fortune_500"
+          },
+          {
+            "bingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+            "dataSource": "Wikipedia",
+            "id": "United States",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.25,
+                "length": 13,
+                "offset": 555,
+                "text": "United States"
+              }
+            ],
+            "name": "United States",
+            "url": "https://en.wikipedia.org/wiki/United_States"
+          }
+        ],
+        "id": "1",
+        "warnings": []
+      },
+      {
+        "entities": [
+          {
+            "bingId": "38b9431e-cf91-93be-0584-c42a3ecbfdc7",
+            "dataSource": "Wikipedia",
+            "id": "Pike Place Market",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.92,
+                "length": 17,
+                "offset": 0,
+                "text": "Pike Place Market"
+              },
+              {
+                "confidenceScore": 0.92,
+                "length": 10,
+                "offset": 357,
+                "text": "Pike Place"
+              }
+            ],
+            "name": "Pike Place Market",
+            "url": "https://en.wikipedia.org/wiki/Pike_Place_Market"
+          },
+          {
+            "bingId": "1c808b36-3655-17ee-7c2e-18f622b0217a",
+            "dataSource": "Wikipedia",
+            "id": "Elliott Bay",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.88,
+                "length": 11,
+                "offset": 53,
+                "text": "Elliott Bay"
+              }
+            ],
+            "name": "Elliott Bay",
+            "url": "https://en.wikipedia.org/wiki/Elliott_Bay"
+          },
+          {
+            "bingId": "945a756b-51a8-4e5b-9985-0e99cee909ca",
+            "dataSource": "Wikipedia",
+            "id": "KeyArena",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.75,
+                "length": 10,
+                "offset": 76,
+                "text": "in Seattle"
+              }
+            ],
+            "name": "KeyArena",
+            "url": "https://en.wikipedia.org/wiki/KeyArena"
+          },
+          {
+            "bingId": "982ad551-fd5d-45df-bd70-bf704dd576e4",
+            "dataSource": "Wikipedia",
+            "id": "Washington (state)",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.08,
+                "length": 25,
+                "offset": 88,
+                "text": "Washington, United States"
+              }
+            ],
+            "name": "Washington (state)",
+            "url": "https://en.wikipedia.org/wiki/Washington_(state)"
+          },
+          {
+            "bingId": "16a09da1-0360-861d-eaf7-0dd0faedde14",
+            "dataSource": "Wikipedia",
+            "id": "Marketplace",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.11,
+                "length": 10,
+                "offset": 115,
+                "text": "The Market"
+              },
+              {
+                "confidenceScore": 0.11,
+                "length": 10,
+                "offset": 420,
+                "text": "The Market"
+              }
+            ],
+            "name": "Marketplace",
+            "url": "https://en.wikipedia.org/wiki/Marketplace"
+          },
+          {
+            "bingId": "290514bb-49de-330d-9caa-ac96155d4083",
+            "dataSource": "Wikipedia",
+            "id": "August 17",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.3,
+                "length": 9,
+                "offset": 136,
+                "text": "August 17"
+              }
+            ],
+            "name": "August 17",
+            "url": "https://en.wikipedia.org/wiki/August_17"
+          },
+          {
+            "bingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+            "dataSource": "Wikipedia",
+            "id": "United States",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.29,
+                "length": 13,
+                "offset": 231,
+                "text": "United States"
+              }
+            ],
+            "name": "United States",
+            "url": "https://en.wikipedia.org/wiki/United_States"
+          },
+          {
+            "bingId": "150c88e7-2d1a-448a-9b32-00949a1021e2",
+            "dataSource": "Wikipedia",
+            "id": "Pike Street",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.52,
+                "length": 11,
+                "offset": 388,
+                "text": "Pike Street"
+              }
+            ],
+            "name": "Pike Street",
+            "url": "https://en.wikipedia.org/wiki/Pike_Street"
+          },
+          {
+            "bingId": "a955c847-0f63-ecc0-03ac-9beb41d57ecd",
+            "dataSource": "Wikipedia",
+            "id": "U.S. Route 395 Business (Reno, Nevada)",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.73,
+                "length": 15,
+                "offset": 403,
+                "text": "Virginia Street"
+              }
+            ],
+            "name": "U.S. Route 395 Business (Reno, Nevada)",
+            "url": "https://en.wikipedia.org/wiki/U.S._Route_395_Business_(Reno,_Nevada)"
+          },
+          {
+            "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+            "dataSource": "Wikipedia",
+            "id": "Seattle",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.92,
+                "length": 9,
+                "offset": 441,
+                "text": "Seattle's"
+              }
+            ],
+            "name": "Seattle",
+            "url": "https://en.wikipedia.org/wiki/Seattle"
+          },
+          {
+            "bingId": "272f0dcd-f86e-2eac-1622-167beebd855d",
+            "dataSource": "Wikipedia",
+            "id": "Original Starbucks",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.89,
+                "length": 18,
+                "offset": 504,
+                "text": "original Starbucks"
+              }
+            ],
+            "name": "Original Starbucks",
+            "url": "https://en.wikipedia.org/wiki/Original_Starbucks"
+          },
+          {
+            "bingId": "e7f69601-fd37-6560-319a-6bd7037a3cf1",
+            "dataSource": "Wikipedia",
+            "id": "Coffee",
+            "language": "en",
+            "matches": [
+              {
+                "confidenceScore": 0.13,
+                "length": 6,
+                "offset": 523,
+                "text": "coffee"
+              }
+            ],
+            "name": "Coffee",
+            "url": "https://en.wikipedia.org/wiki/Coffee"
+          }
+        ],
+        "id": "2",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2021-06-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for EntityRecognition:
+{
+  "results": {
+    "documents": [
+      {
+        "entities": [
+          {
+            "category": "Organization",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 0,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "Organization"
+              }
+            ],
+            "text": "Microsoft",
+            "type": "Organization"
+          },
+          {
+            "category": "Person",
+            "confidenceScore": 1,
+            "length": 10,
+            "offset": 25,
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Person"
+              }
+            ],
+            "text": "Bill Gates",
+            "type": "Person"
+          },
+          {
+            "category": "Person",
+            "confidenceScore": 1,
+            "length": 10,
+            "offset": 40,
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Person"
+              }
+            ],
+            "text": "Paul Allen",
+            "type": "Person"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 52,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "Organization"
+              }
+            ],
+            "text": "Microsoft",
+            "type": "Organization"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.97,
+            "length": 10,
+            "offset": 67,
+            "tags": [
+              {
+                "confidenceScore": 0.97,
+                "name": "Skill"
+              }
+            ],
+            "text": "technology",
+            "type": "Skill"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.95,
+            "length": 8,
+            "offset": 91,
+            "tags": [
+              {
+                "confidenceScore": 0.95,
+                "name": "Skill"
+              }
+            ],
+            "text": "develops",
+            "type": "Skill"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.51,
+            "length": 12,
+            "offset": 101,
+            "tags": [
+              {
+                "confidenceScore": 0.51,
+                "name": "Skill"
+              }
+            ],
+            "text": "manufactures",
+            "type": "Skill"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.79,
+            "length": 8,
+            "offset": 115,
+            "tags": [
+              {
+                "confidenceScore": 0.79,
+                "name": "Skill"
+              }
+            ],
+            "text": "licenses",
+            "type": "Skill"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.88,
+            "length": 8,
+            "offset": 125,
+            "tags": [
+              {
+                "confidenceScore": 0.88,
+                "name": "Skill"
+              }
+            ],
+            "text": "supports",
+            "type": "Skill"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 1,
+            "length": 8,
+            "offset": 156,
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Skill"
+              }
+            ],
+            "text": "software",
+            "type": "Skill"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.97,
+            "length": 8,
+            "offset": 178,
+            "tags": [
+              {
+                "confidenceScore": 0.97,
+                "name": "Skill"
+              }
+            ],
+            "text": "services",
+            "type": "Skill"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.97,
+            "length": 8,
+            "offset": 203,
+            "tags": [
+              {
+                "confidenceScore": 0.97,
+                "name": "Skill"
+              }
+            ],
+            "text": "software",
+            "type": "Skill"
+          },
+          {
+            "category": "Product",
+            "confidenceScore": 0.9,
+            "length": 22,
+            "offset": 229,
+            "subcategory": "ComputingProduct",
+            "tags": [
+              {
+                "confidenceScore": 0.9,
+                "name": "ComputingProduct"
+              },
+              {
+                "confidenceScore": 0.9,
+                "name": "Product"
+              }
+            ],
+            "text": "Microsoft Windows line",
+            "type": "ComputingProduct"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.6,
+            "length": 17,
+            "offset": 255,
+            "tags": [
+              {
+                "confidenceScore": 0.6,
+                "name": "Skill"
+              }
+            ],
+            "text": "operating systems",
+            "type": "Skill"
+          },
+          {
+            "category": "Product",
+            "confidenceScore": 1,
+            "length": 22,
+            "offset": 278,
+            "subcategory": "ComputingProduct",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "ComputingProduct"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Product"
+              }
+            ],
+            "text": "Microsoft Office suite",
+            "type": "ComputingProduct"
+          },
+          {
+            "category": "Product",
+            "confidenceScore": 1,
+            "length": 17,
+            "offset": 310,
+            "subcategory": "ComputingProduct",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "ComputingProduct"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Product"
+              }
+            ],
+            "text": "Internet Explorer",
+            "type": "ComputingProduct"
+          },
+          {
+            "category": "Product",
+            "confidenceScore": 0.98,
+            "length": 4,
+            "offset": 332,
+            "subcategory": "ComputingProduct",
+            "tags": [
+              {
+                "confidenceScore": 0.98,
+                "name": "ComputingProduct"
+              },
+              {
+                "confidenceScore": 0.98,
+                "name": "Product"
+              }
+            ],
+            "text": "Edge",
+            "type": "ComputingProduct"
+          },
+          {
+            "category": "Product",
+            "confidenceScore": 0.95,
+            "length": 24,
+            "offset": 390,
+            "tags": [
+              {
+                "confidenceScore": 0.95,
+                "name": "Product"
+              }
+            ],
+            "text": "Xbox video game consoles",
+            "type": "Product"
+          },
+          {
+            "category": "Product",
+            "confidenceScore": 1,
+            "length": 17,
+            "offset": 423,
+            "subcategory": "ComputingProduct",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "ComputingProduct"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Product"
+              }
+            ],
+            "text": "Microsoft Surface",
+            "type": "ComputingProduct"
+          },
+          {
+            "category": "Product",
+            "confidenceScore": 0.63,
+            "length": 18,
+            "offset": 463,
+            "tags": [
+              {
+                "confidenceScore": 0.63,
+                "name": "Product"
+              }
+            ],
+            "text": "personal computers",
+            "type": "Product"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 483,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "Organization"
+              }
+            ],
+            "text": "Microsoft",
+            "type": "Organization"
+          },
+          {
+            "category": "Quantity",
+            "confidenceScore": 0.8,
+            "length": 2,
+            "metadata": {
+              "metadataKind": "NumberMetadata",
+              "numberKind": "Integer",
+              "value": 21
+            },
+            "offset": 504,
+            "subcategory": "Number",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "Number"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Numeric"
+              }
+            ],
+            "text": "21",
+            "type": "Number"
+          },
+          {
+            "category": "DateTime",
+            "confidenceScore": 0.8,
+            "length": 4,
+            "metadata": {
+              "metadataKind": "TemporalSpanMetadata",
+              "spanValues": [
+                {
+                  "begin": "2020-01-01",
+                  "end": "2021-01-01",
+                  "timex": "2020"
+                }
+              ]
+            },
+            "offset": 514,
+            "subcategory": "DateRange",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "DateRange"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "DateTime"
+              }
+            ],
+            "text": "2020",
+            "type": "DateRange"
+          },
+          {
+            "category": "Quantity",
+            "confidenceScore": 0.8,
+            "length": 4,
+            "metadata": {
+              "metadataKind": "NumberMetadata",
+              "numberKind": "Integer",
+              "value": 2020
+            },
+            "offset": 514,
+            "subcategory": "Number",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "Number"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Numeric"
+              }
+            ],
+            "text": "2020",
+            "type": "Number"
+          },
+          {
+            "category": "Quantity",
+            "confidenceScore": 0.8,
+            "length": 3,
+            "metadata": {
+              "metadataKind": "NumberMetadata",
+              "numberKind": "Integer",
+              "value": 500
+            },
+            "offset": 527,
+            "subcategory": "Number",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "Number"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Numeric"
+              }
+            ],
+            "text": "500",
+            "type": "Number"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 13,
+            "offset": 555,
+            "subcategory": "CountryRegion",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "CountryRegion"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "United States",
+            "type": "CountryRegion"
+          }
+        ],
+        "id": "1",
+        "warnings": []
+      },
+      {
+        "entities": [
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 17,
+            "offset": 0,
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "Pike Place Market",
+            "type": "Location"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.96,
+            "length": 22,
+            "offset": 53,
+            "tags": [
+              {
+                "confidenceScore": 0.96,
+                "name": "Location"
+              }
+            ],
+            "text": "Elliott Bay waterfront",
+            "type": "Location"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.83,
+            "length": 7,
+            "offset": 79,
+            "subcategory": "City",
+            "tags": [
+              {
+                "confidenceScore": 0.83,
+                "name": "City"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "Seattle",
+            "type": "City"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.52,
+            "length": 11,
+            "offset": 88,
+            "subcategory": "GPE",
+            "tags": [
+              {
+                "confidenceScore": 0.52,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 0.52,
+                "name": "Location"
+              }
+            ],
+            "text": "Washington,",
+            "type": "GPE"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.78,
+            "length": 13,
+            "offset": 100,
+            "subcategory": "GPE",
+            "tags": [
+              {
+                "confidenceScore": 0.78,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Location"
+              }
+            ],
+            "text": "United States",
+            "type": "GPE"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.5,
+            "length": 6,
+            "offset": 119,
+            "tags": [
+              {
+                "confidenceScore": 0.5,
+                "name": "Location"
+              }
+            ],
+            "text": "Market",
+            "type": "Location"
+          },
+          {
+            "category": "DateTime",
+            "confidenceScore": 0.8,
+            "length": 15,
+            "metadata": {
+              "dateValues": [
+                {
+                  "timex": "1907-08-17",
+                  "value": "1907-08-17"
+                }
+              ],
+              "metadataKind": "DateMetadata"
+            },
+            "offset": 136,
+            "subcategory": "Date",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "Date"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "DateTime"
+              }
+            ],
+            "text": "August 17, 1907",
+            "type": "Date"
+          },
+          {
+            "category": "Quantity",
+            "confidenceScore": 0.8,
+            "length": 3,
+            "metadata": {
+              "metadataKind": "NumberMetadata",
+              "numberKind": "Integer",
+              "value": 1
+            },
+            "offset": 160,
+            "subcategory": "Number",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "Number"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Numeric"
+              }
+            ],
+            "text": "one",
+            "type": "Number"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 13,
+            "offset": 231,
+            "subcategory": "CountryRegion",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "CountryRegion"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "United States",
+            "type": "CountryRegion"
+          },
+          {
+            "category": "Skill",
+            "confidenceScore": 0.67,
+            "length": 8,
+            "offset": 263,
+            "tags": [
+              {
+                "confidenceScore": 0.67,
+                "name": "Skill"
+              }
+            ],
+            "text": "business",
+            "type": "Skill"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.85,
+            "length": 7,
+            "offset": 287,
+            "tags": [
+              {
+                "confidenceScore": 0.85,
+                "name": "PersonType"
+              }
+            ],
+            "text": "farmers",
+            "type": "PersonType"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.99,
+            "length": 12,
+            "offset": 296,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "PersonType"
+              }
+            ],
+            "text": "craftspeople",
+            "type": "PersonType"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 314,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "PersonType"
+              }
+            ],
+            "text": "merchants",
+            "type": "PersonType"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.94,
+            "length": 10,
+            "offset": 357,
+            "tags": [
+              {
+                "confidenceScore": 0.94,
+                "name": "Location"
+              }
+            ],
+            "text": "Pike Place",
+            "type": "Location"
+          },
+          {
+            "category": "Address",
+            "confidenceScore": 0.99,
+            "length": 11,
+            "offset": 388,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "Address"
+              }
+            ],
+            "text": "Pike Street",
+            "type": "Address"
+          },
+          {
+            "category": "Address",
+            "confidenceScore": 1,
+            "length": 15,
+            "offset": 403,
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Address"
+              }
+            ],
+            "text": "Virginia Street",
+            "type": "Address"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.83,
+            "length": 10,
+            "offset": 420,
+            "subcategory": "Structural",
+            "tags": [
+              {
+                "confidenceScore": 0.83,
+                "name": "Structural"
+              },
+              {
+                "confidenceScore": 0.83,
+                "name": "Location"
+              }
+            ],
+            "text": "The Market",
+            "type": "Structural"
+          },
+          {
+            "category": "Quantity",
+            "confidenceScore": 0.8,
+            "length": 3,
+            "metadata": {
+              "metadataKind": "NumberMetadata",
+              "numberKind": "Integer",
+              "value": 1
+            },
+            "offset": 434,
+            "subcategory": "Number",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "Number"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Numeric"
+              }
+            ],
+            "text": "one",
+            "type": "Number"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 7,
+            "offset": 441,
+            "subcategory": "City",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "City"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "Seattle",
+            "type": "City"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.78,
+            "length": 7,
+            "offset": 464,
+            "tags": [
+              {
+                "confidenceScore": 0.78,
+                "name": "PersonType"
+              }
+            ],
+            "text": "tourist",
+            "type": "PersonType"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.82,
+            "length": 9,
+            "offset": 513,
+            "tags": [
+              {
+                "confidenceScore": 0.82,
+                "name": "Organization"
+              }
+            ],
+            "text": "Starbucks",
+            "type": "Organization"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.79,
+            "length": 11,
+            "offset": 523,
+            "tags": [
+              {
+                "confidenceScore": 0.79,
+                "name": "Location"
+              }
+            ],
+            "text": "coffee shop",
+            "type": "Location"
+          }
+        ],
+        "id": "2",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2023-09-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for KeyPhraseExtraction:
+{
+  "results": {
+    "documents": [
+      {
+        "id": "1",
+        "keyPhrases": [
+          "Xbox video game consoles",
+          "largest United States corporations",
+          "Edge web browsers",
+          "touchscreen personal computers",
+          "flagship hardware products",
+          "Microsoft Windows line",
+          "Microsoft Office suite",
+          "Microsoft Surface lineup",
+          "software products",
+          "Bill Gates",
+          "Paul Allen",
+          "technology company",
+          "operating systems",
+          "Internet Explorer",
+          "2020 Fortune 500 rankings",
+          "total revenue",
+          "licenses",
+          "range",
+          "services"
+        ],
+        "warnings": []
+      },
+      {
+        "id": "2",
+        "keyPhrases": [
+          "original Starbucks coffee shop",
+          "Elliott Bay waterfront",
+          "many small farmers",
+          "popular tourist destinations",
+          "public farmers' markets",
+          "Pike Place Market",
+          "public market",
+          "Pike Street",
+          "The Market",
+          "United States",
+          "central street",
+          "Virginia Street",
+          "Seattle",
+          "Washington",
+          "August",
+          "business",
+          "craftspeople",
+          "merchants"
+        ],
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2022-10-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for PiiEntityRecognition:
+{
+  "results": {
+    "documents": [
+      {
+        "entities": [
+          {
+            "category": "Organization",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 0,
+            "text": "Microsoft"
+          },
+          {
+            "category": "Person",
+            "confidenceScore": 1,
+            "length": 10,
+            "offset": 25,
+            "text": "Bill Gates"
+          },
+          {
+            "category": "Person",
+            "confidenceScore": 1,
+            "length": 10,
+            "offset": 40,
+            "text": "Paul Allen"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 52,
+            "text": "Microsoft"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.73,
+            "length": 9,
+            "offset": 229,
+            "text": "Microsoft"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.81,
+            "length": 9,
+            "offset": 423,
+            "text": "Microsoft"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 483,
+            "text": "Microsoft"
+          }
+        ],
+        "id": "1",
+        "redactedText": "********* was founded by ********** and **********. ********* is a technology company that develops, manufactures, licenses, supports, and sells a range of software products and services. Its best-known software products are the ********* Windows line of operating systems, the Microsoft Office suite, and the Internet Explorer and Edge web browsers. Its flagship hardware products are the Xbox video game consoles and the ********* Surface lineup of touchscreen personal computers. ********* ranked No. 21 in the 2020 Fortune 500 rankings of the largest United States corporations by total revenue.",
+        "warnings": []
+      },
+      {
+        "entities": [
+          {
+            "category": "DateTime",
+            "confidenceScore": 1,
+            "length": 15,
+            "offset": 136,
+            "subcategory": "Date",
+            "text": "August 17, 1907"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.85,
+            "length": 7,
+            "offset": 287,
+            "text": "farmers"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.99,
+            "length": 12,
+            "offset": 296,
+            "text": "craftspeople"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.99,
+            "length": 9,
+            "offset": 314,
+            "text": "merchants"
+          },
+          {
+            "category": "Address",
+            "confidenceScore": 0.99,
+            "length": 11,
+            "offset": 388,
+            "text": "Pike Street"
+          },
+          {
+            "category": "Address",
+            "confidenceScore": 1,
+            "length": 15,
+            "offset": 403,
+            "text": "Virginia Street"
+          },
+          {
+            "category": "PersonType",
+            "confidenceScore": 0.78,
+            "length": 7,
+            "offset": 464,
+            "text": "tourist"
+          },
+          {
+            "category": "Organization",
+            "confidenceScore": 0.82,
+            "length": 9,
+            "offset": 513,
+            "text": "Starbucks"
+          }
+        ],
+        "id": "2",
+        "redactedText": "Pike Place Market is a public market overlooking the Elliott Bay waterfront in Seattle, Washington, United States. The Market opened on ***************, and is one of the oldest continuously operated public farmers' markets in the United States. It is a place of business for many small *******, ************, and *********. Named after the central street, Pike Place runs northwest from *********** to ***************. The Market is one of Seattle's most popular ******* destinations and is home to the original ********* coffee shop.",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2023-09-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for SentimentAnalysis:
+{
+  "results": {
+    "documents": [
+      {
+        "confidenceScores": {
+          "negative": 0,
+          "neutral": 0.9,
+          "positive": 0.09
+        },
+        "id": "1",
+        "sentences": [
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 0.98,
+              "positive": 0.02
+            },
+            "length": 52,
+            "offset": 0,
+            "sentiment": "neutral",
+            "text": "Microsoft was founded by Bill Gates and Paul Allen. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 1,
+              "positive": 0
+            },
+            "length": 136,
+            "offset": 52,
+            "sentiment": "neutral",
+            "text": "Microsoft is a technology company that develops, manufactures, licenses, supports, and sells a range of software products and services. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 0.99,
+              "positive": 0.01
+            },
+            "length": 163,
+            "offset": 188,
+            "sentiment": "neutral",
+            "text": "Its best-known software products are the Microsoft Windows line of operating systems, the Microsoft Office suite, and the Internet Explorer and Edge web browsers. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 1,
+              "positive": 0
+            },
+            "length": 132,
+            "offset": 351,
+            "sentiment": "neutral",
+            "text": "Its flagship hardware products are the Xbox video game consoles and the Microsoft Surface lineup of touchscreen personal computers. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 0.56,
+              "positive": 0.44
+            },
+            "length": 116,
+            "offset": 483,
+            "sentiment": "neutral",
+            "text": "Microsoft ranked No. 21 in the 2020 Fortune 500 rankings of the largest United States corporations by total revenue."
+          }
+        ],
+        "sentiment": "neutral",
+        "warnings": []
+      },
+      {
+        "confidenceScores": {
+          "negative": 0,
+          "neutral": 0.97,
+          "positive": 0.03
+        },
+        "id": "2",
+        "sentences": [
+          {
+            "confidenceScores": {
+              "negative": 0.01,
+              "neutral": 0.92,
+              "positive": 0.07
+            },
+            "length": 115,
+            "offset": 0,
+            "sentiment": "neutral",
+            "text": "Pike Place Market is a public market overlooking the Elliott Bay waterfront in Seattle, Washington, United States. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 1,
+              "positive": 0
+            },
+            "length": 131,
+            "offset": 115,
+            "sentiment": "neutral",
+            "text": "The Market opened on August 17, 1907, and is one of the oldest continuously operated public farmers' markets in the United States. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 0.97,
+              "positive": 0.03
+            },
+            "length": 79,
+            "offset": 246,
+            "sentiment": "neutral",
+            "text": "It is a place of business for many small farmers, craftspeople, and merchants. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 0.99,
+              "positive": 0
+            },
+            "length": 95,
+            "offset": 325,
+            "sentiment": "neutral",
+            "text": "Named after the central street, Pike Place runs northwest from Pike Street to Virginia Street. "
+          },
+          {
+            "confidenceScores": {
+              "negative": 0,
+              "neutral": 0.97,
+              "positive": 0.03
+            },
+            "length": 115,
+            "offset": 420,
+            "sentiment": "neutral",
+            "text": "The Market is one of Seattle's most popular tourist destinations and is home to the original Starbucks coffee shop."
+          }
+        ],
+        "sentiment": "neutral",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2025-01-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for LanguageDetection:
+{
+  "results": {
+    "documents": [
+      {
+        "detectedLanguage": {
+          "confidenceScore": 0.81,
+          "iso6391Name": "en",
+          "name": "English",
+          "scriptIso15924Code": "Latn",
+          "scriptName": "Latin"
+        },
+        "id": "1",
+        "warnings": []
+      },
+      {
+        "detectedLanguage": {
+          "confidenceScore": 1,
+          "iso6391Name": "fr",
+          "name": "French",
+          "scriptIso15924Code": "Latn",
+          "scriptName": "Latin"
+        },
+        "id": "2",
+        "warnings": []
+      },
+      {
+        "detectedLanguage": {
+          "confidenceScore": 1,
+          "iso6391Name": "es",
+          "name": "Spanish",
+          "scriptIso15924Code": "Latn",
+          "scriptName": "Latin"
+        },
+        "id": "3",
+        "warnings": []
+      },
+      {
+        "detectedLanguage": {
+          "confidenceScore": 1,
+          "iso6391Name": "hi",
+          "name": "Hindi",
+          "scriptIso15924Code": "Latn",
+          "scriptName": "Latin"
+        },
+        "id": "4",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2024-04-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for EntityRecognition with exclusion list:
+{
+  "results": {
+    "documents": [
+      {
+        "entities": [],
+        "id": "2",
+        "warnings": []
+      },
+      {
+        "entities": [
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 3,
+            "offset": 18,
+            "subcategory": "Airport",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Airport"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Structural"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "LAX",
+            "type": "Airport"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 9,
+            "offset": 96,
+            "subcategory": "City",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "City"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "Amsterdam",
+            "type": "City"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.99,
+            "length": 12,
+            "offset": 107,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "Location"
+              }
+            ],
+            "text": "Eiffel Tower",
+            "type": "Location"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.99,
+            "length": 4,
+            "offset": 129,
+            "subcategory": "Geographical",
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "Geographical"
+              }
+            ],
+            "text": "Nile",
+            "type": "Geographical"
+          }
+        ],
+        "id": "3",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2023-09-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for EntityRecognition with inclusion list:
+{
+  "results": {
+    "documents": [
+      {
+        "entities": [],
+        "id": "2",
+        "warnings": []
+      },
+      {
+        "entities": [
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 3,
+            "offset": 18,
+            "subcategory": "Airport",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Airport"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Structural"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "LAX",
+            "type": "Airport"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 1,
+            "length": 9,
+            "offset": 96,
+            "subcategory": "City",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "City"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "GPE"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Location"
+              }
+            ],
+            "text": "Amsterdam",
+            "type": "City"
+          },
+          {
+            "category": "Location",
+            "confidenceScore": 0.99,
+            "length": 12,
+            "offset": 107,
+            "tags": [
+              {
+                "confidenceScore": 0.99,
+                "name": "Location"
+              }
+            ],
+            "text": "Eiffel Tower",
+            "type": "Location"
+          }
+        ],
+        "id": "3",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2023-09-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for EntityRecognition with inference options:
+{
+  "results": {
+    "documents": [
+      {
+        "entities": [
+          {
+            "category": "Quantity",
+            "confidenceScore": 1,
+            "length": 11,
+            "offset": 11,
+            "subcategory": "Age",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "Age"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Numeric"
+              }
+            ],
+            "text": "5 years old",
+            "type": "Age"
+          },
+          {
+            "category": "Quantity",
+            "confidenceScore": 0.97,
+            "length": 14,
+            "offset": 29,
+            "subcategory": "Currency",
+            "tags": [
+              {
+                "confidenceScore": 0.97,
+                "name": "Currency"
+              },
+              {
+                "confidenceScore": 0.97,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 0.97,
+                "name": "Numeric"
+              }
+            ],
+            "text": "$90.00 dollars",
+            "type": "Currency"
+          }
+        ],
+        "id": "1",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2023-09-01"
+  }
+}
+Request URL:  https://tngodemo1aicoursedemo.cognitiveservices.azure.com/language/:analyze-text?api-version=2024-11-01
+AnalyzeText response for EntityRecognition with overlap policy:
+{
+  "results": {
+    "documents": [
+      {
+        "entities": [
+          {
+            "category": "Event",
+            "confidenceScore": 0.97,
+            "length": 18,
+            "offset": 0,
+            "tags": [
+              {
+                "confidenceScore": 0.97,
+                "name": "Event"
+              }
+            ],
+            "text": "25th April Meeting",
+            "type": "Event"
+          },
+          {
+            "category": "Quantity",
+            "confidenceScore": 0.8,
+            "length": 3,
+            "metadata": {
+              "metadataKind": "NumberMetadata",
+              "numberKind": "Integer",
+              "value": 1
+            },
+            "offset": 38,
+            "subcategory": "Number",
+            "tags": [
+              {
+                "confidenceScore": 0.8,
+                "name": "Number"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Quantity"
+              },
+              {
+                "confidenceScore": 0.8,
+                "name": "Numeric"
+              }
+            ],
+            "text": "one",
+            "type": "Number"
+          },
+          {
+            "category": "Event",
+            "confidenceScore": 1,
+            "length": 8,
+            "offset": 77,
+            "subcategory": "Sports",
+            "tags": [
+              {
+                "confidenceScore": 1,
+                "name": "EventSports"
+              },
+              {
+                "confidenceScore": 1,
+                "name": "Event"
+              }
+            ],
+            "text": "WorldCup",
+            "type": "EventSports"
+          }
+        ],
+        "id": "4",
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "modelVersion": "2023-09-01"
+  }
+}
