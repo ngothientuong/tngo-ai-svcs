@@ -43,4 +43,16 @@ func main() {
 	}
 
 	fmt.Printf("Audio saved to %s\n", outputFile)
+
+	// Get the list of voices
+	voices, err := client.GetVoices()
+	if err != nil {
+		log.Fatalf("Error getting voices: %v", err)
+	}
+
+	// Print the list of voices
+	fmt.Println("Available voices:")
+	for _, voice := range voices {
+		fmt.Printf("Name: %s, Locale: %s, Gender: %s\n", voice.Name, voice.Locale, voice.Gender)
+	}
 }
