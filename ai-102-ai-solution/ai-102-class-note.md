@@ -231,12 +231,20 @@ Reference: https://contentsafety.cognitive.azure.com
 - [REST API Reference](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/reference-video-search)
 - **Note**: Can't use the service nor its APIs unless you go with paid account
 
-<h1 style="color:blue; font-family:cursive; font-weight:bold; text-align:left;">Implement Natural Language Processing Solutions</h1>
+<h1 style="color:Red; font-family:cursive; font-weight:bold; text-align:left;">Implement Natural Language Processing Solutions</h1>
 
-<h2 style="color:blue; font-family:cursive; font-weight:bold; text-align:left;">Analyze Text</h2>
+
+<h2 style="color:Green; font-family:cursive; font-weight:bold; text-align:left;">Language Service</h2>
+- [Language Studio](https://language.cognitive.azure.com/home)
+- **Important**: Make sure you invite an external account in `Microsoft Entra ID` send invite to another account and use that account to signin with your domain `#EXT@XXXXX.onmicrosoft.com` instead of your root personal email account. You'll need to accept invite from your personal account, then change password by `Forget password` option.
+
+![alt text](image-5.png)
+
+<h3 style="color:blue; font-family:cursive; font-weight:bold; text-align:left;">Analyze Text</h3>
 
 ## Key Phrase Extraction
 
+- Resource: `Language`
 - [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
 
 - Identifies the main concepts and phrases from text, providing insights into its primary themes and topics
@@ -250,12 +258,14 @@ Reference: https://contentsafety.cognitive.azure.com
 
 ## Entity linking
 
+- Resource: `Language`
 - [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
 
 - `Entity linking` identifies and disambiguates the identity of entities found in text. For example, in the sentence "We went to Seattle last week.", the word "Seattle" would be identified, with a link to more information on Wikipedia.
 
 ## Named Entity Recognition (NER)
 
+- Resource: `Language`
 - [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
 
 - The `NER` feature can identify and categorize entities in unstructured text.
@@ -263,6 +273,7 @@ Reference: https://contentsafety.cognitive.azure.com
 
 ## Text Analytics for Health
 
+- Resource: `Language`
 - [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
 
 - `Text Analytics for health` is a cloud-based API service that applies machine-learning intelligence to extract and label relevant medical information from a variety of unstructured texts such as doctor's notes, discharge summaries, clinical documents, and electronic health records.
@@ -274,6 +285,7 @@ Reference: https://contentsafety.cognitive.azure.com
 
 ## Custom Named Entity Recognition (NER)
 
+- Resource: `Language`
 - [REST API Reference](https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2024-11-01&tabs=HTTP)
 
 - `Custom NER` is a cloud-based API service that applies machine-learning intelligence to enable you to build custom models for custom named entity recognition tasks.
@@ -291,3 +303,33 @@ Reference: https://contentsafety.cognitive.azure.com
   - View the model's performance: Evaluate and improve the model.
   - Deploy the model: Make it available for use via the Analyze API.
   - Extract entities: Use your custom models for entity extraction tasks.
+
+- **TO-DO**:
+  - Work on trained Custom `Name Entities Recognition` with REST API
+  - [Create custom NER project REST API](https://learn.microsoft.com/en-us/azure/ai-services/language-service/custom-named-entity-recognition/how-to/create-project?tabs=portal%2Crest-api)
+
+
+<h2 style="color:Green; font-family:cursive; font-weight:bold; text-align:left;">Speech Service</h2>
+
+- Resource: `Speech`
+- [Speech Studio](https://speech.microsoft.com/portal): Switching to [Azure AI Foundry](https://ai.azure.com/) soon
+
+## Text To Speech
+
+-  [Text To Speech Quick Start](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/get-started-text-to-speech?tabs=windows%2Cterminal&pivots=programming-language-rest)
+- [Text To Speech REST API](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/rest-text-to-speech?tabs=streaming)
+- [Get Token for Text To Speech REST API](https://learn.microsoft.com/en-gb/azure/ai-services/speech-service/rest-text-to-speech?tabs=streaming#authentication)
+
+- `prosody`: The patterns of stress and intonation in spoken language
+- `Visemes`: Visemes are the key poses in observed speech, including the position of the lips, jaw, and tongue in producing a particular phoneme
+- **Features**:
+  - Prebuilt neural voice (called Neural on the pricing page): Highly natural out-of-the-box voices.
+  - Custom neural voice (called Custom Neural on the pricing page): Easy-to-use self-service for creating a natural brand voice, with limited access for responsible use.
+
+- Techniques for natual voice:
+  - `Real-time speech synthesis`: Use the Speech SDK or [Text To Speech REST API](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/get-started-text-to-speech?tabs=windows%2Cterminal&pivots=programming-language-rest) to convert text to speech by using prebuilt neural voices or custom neural voices.
+  - `Asynchronous synthesis of long audio`: Use the [batch synthesis API](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/batch-synthesis) to asynchronously synthesize text to speech files longer than 10 minutes (for example, audio books or lectures). Unlike synthesis performed via the Speech SDK or Speech to text REST API, responses aren't returned in real-time. The expectation is that requests are sent asynchronously, responses are polled for, and synthesized audio is downloaded when the service makes it available.
+  - [Prebuilt neural voices](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=tts): Each prebuilt neural voice model is available at 24 kHz and high-fidelity 48 kHz.
+    - Make interactions with chatbots and voice assistants more natural and engaging.
+    - Convert digital texts such as e-books into audiobooks.
+    - Enhance in-car navigation systems.
