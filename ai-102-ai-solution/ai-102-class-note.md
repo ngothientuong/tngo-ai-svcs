@@ -318,6 +318,7 @@ Reference: https://contentsafety.cognitive.azure.com
 
 -  [Text To Speech Quick Start](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/get-started-text-to-speech?tabs=windows%2Cterminal&pivots=programming-language-rest)
 - [Text To Speech REST API](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/rest-text-to-speech?tabs=streaming)
+  - **Note**: Can use `Ocp-Apim-Subscription-Key` to exchange for a `Authorization` token which last for 10m or use `Ocp-Apim-Subscription-Key` throughout
 - [Get Token for Text To Speech REST API](https://learn.microsoft.com/en-gb/azure/ai-services/speech-service/rest-text-to-speech?tabs=streaming#authentication)
 
 - `prosody`: The patterns of stress and intonation in spoken language
