@@ -2,6 +2,10 @@
 
 sudo apt-get update
 sudo apt-get install build-essential ca-certificates libasound2-dev libssl-dev wget -y
+# Live Streaming
+sudo apt install ffmpeg -y
+# Ensure to install `python ahead of time!`
+pip install yt-dlp
 
 # Load environment variables from .env file
 ENV_FILE=$(dirname $(dirname $(dirname $(realpath $0))))/.env
