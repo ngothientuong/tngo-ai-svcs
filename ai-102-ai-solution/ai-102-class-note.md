@@ -334,3 +334,5 @@ Reference: https://contentsafety.cognitive.azure.com
     - Make interactions with chatbots and voice assistants more natural and engaging.
     - Convert digital texts such as e-books into audiobooks.
     - Enhance in-car navigation systems.
+- [Custom voice](https://learn.microsoft.com/en-gb/rest/api/aiservices/speechapi/operation-groups?view=rest-aiservices-speechapi-2024-02-01-preview):
+  - You can train custom voice which requires Azure approval for limited use
