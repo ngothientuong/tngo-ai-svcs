@@ -45,7 +45,7 @@ Run the MSI installer and follow the prompts.
 
 3. **Set up Go environment variables**
 
-Add the following lines to your [.bashrc](http://_vscodecontentref_/0), `.zshrc`, or `.profile` file:
+Add the following lines to your `.bashrc`, `.zshrc`, or `.profile` file:
 
 ```sh
 export PATH=$PATH:/usr/local/go/bin
@@ -64,6 +64,22 @@ Ensure that Go is installed correctly by running the following command:
 ```sh
 go version
 ```
+
+## Install Azure Speech SDK
+
+Follow these steps to install the Azure Speech SDK:
+
+1. **Run the installation script**
+
+Navigate to the `prerequisites/azure_speech_sdk` directory and run the `install_speech_sdk.sh` script where go mod is with `require github.com/Microsoft/cognitive-services-speech-sdk-go v1.33.0`:
+
+```sh
+cd prerequisites/azure_speech_sdk
+./install_speech_sdk.sh
+source ~/.bashrc
+```
+
+This script will download and install the Azure Speech SDK and set the necessary environment variables.
 
 ## Azure Resources Setup
 
