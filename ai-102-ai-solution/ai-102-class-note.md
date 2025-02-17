@@ -316,6 +316,9 @@ Reference: https://contentsafety.cognitive.azure.com
 
 ## Text To Speech
 
+![alt text](image-7.png)
+![alt text](image-9.png)
+
 -  [Text To Speech Quick Start](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/get-started-text-to-speech?tabs=windows%2Cterminal&pivots=programming-language-rest)
 - [Text To Speech REST API](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/rest-text-to-speech?tabs=streaming)
   - **Note**: Can use `Ocp-Apim-Subscription-Key` to exchange for a `Authorization` token which last for 10m or use `Ocp-Apim-Subscription-Key` throughout
@@ -336,3 +339,120 @@ Reference: https://contentsafety.cognitive.azure.com
     - Enhance in-car navigation systems.
 - [Custom voice](https://learn.microsoft.com/en-gb/rest/api/aiservices/speechapi/operation-groups?view=rest-aiservices-speechapi-2024-02-01-preview):
   - You can train custom voice which requires Azure approval for limited use
+
+## Speech To Text
+
+![alt text](image-6.png)
+
+![alt text](image-8.png)
+
+Azure AI Speech service offers advanced speech-to-text capabilities, supporting both real-time and batch transcription for converting audio streams into text.
+
+#### Core Features:
+  - **Real-time transcription**: Instant transcription with intermediate results for live audio inputs.
+  - **Fast transcription**: Synchronous output for quick transcription of audio recordings.
+  - **Batch transcription**: Efficient processing for large volumes of prerecorded audio.
+  - **Custom speech**: Enhanced accuracy for specific domains and conditions.
+
+#### Real-time Speech to Text:
+  - **Applications**: Live meeting transcriptions, captions, diarization, pronunciation assessment, call center assistance, dictation, and voice agents.
+
+#### Fast Transcription:
+  - **Applications**: Quick transcription of audio/video files, video translation.
+
+#### Batch Transcription:
+  - **Applications**: Transcriptions for prerecorded audio, contact center analytics, diarization.
+
+#### Custom Speech:
+- **Applications**: Tailoring models for domain-specific vocabulary and specific audio conditions.
+
+#### Usage Examples:
+  - **Live meeting transcriptions**: Real-time captions for webinars.
+  - **Customer service**: Real-time transcriptions for call centers.
+  - **Video subtitling**: Quick generation of subtitles.
+  - **Educational tools**: Transcriptions for video lectures.
+  - **Healthcare documentation**: Real-time dictation for patient consultations.
+  - **Media and entertainment**: Subtitles for video archives.
+  - **Market research**: Transcription of audio feedback for analysis.
+
+## Speech Synthesis Markup Language (SSML) Overview
+
+### What is SSML?
+Speech Synthesis Markup Language (SSML) is an **XML-based markup language** that enhances text-to-speech (TTS) by allowing fine-tuned control over **pitch, pronunciation, speaking rate, volume**, and other speech attributes. It provides greater flexibility compared to plain text input.
+
+> **Tip**: Use the [Voice Gallery](https://speech.microsoft.com/portal) to hear different voice styles and pitches.
+
+### Use Case Scenarios
+SSML enables various customizations for **speech output**:
+
+- **Text Structure Definition**: Define paragraphs, sentences, breaks, pauses, or silence.
+- **Event Tags**: Embed bookmarks or visemes (visual phoneme representations).
+- **Voice Customization**: Choose voice, language, style, and role. Use multiple voices in a single document.
+- **Speech Characteristics**: Adjust **emphasis, speaking rate, pitch, and volume**.
+- **Pronunciation Control**: Use phonemes and custom lexicons to refine pronunciation.
+- **Pre-recorded Audio Insertion**: Add sound effects or music within speech output.
+
+### Ways to Work with SSML
+Several tools support SSML for **speech synthesis**:
+
+1. **Speech Studio (Audio Content Creation Tool)**:
+   - Allows authoring plain text and SSML.
+   - Provides audio previews for adjustments.
+   - [Learn More](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-synthesis-markup)
+
+2. **Batch Synthesis API**:
+   - Accepts SSML as input via the `inputs` property.
+
+3. **Speech CLI (`spx synthesize --ssml`)**:
+   - Converts SSML into speech via command-line.
+
+4. **Speech SDK**:
+   - Supports SSML through the `speak` method in various programming languages.
+
+## Intent Recognition & Pattern Matching
+![alt text](image-10.png)
+
+- Resource:  [CLU](https://learn.microsoft.com/en-us/azure/ai-services/language-service/conversational-language-understanding/overview)
+> <h2 style="color:Red; font-family:cursive; font-weight:bold; text-align:left;">⚠ LUIS will be retired on October 1, 2025</h2>
+> **As of April 1, 2023, new LUIS resources cannot be created.**
+> **Migrate LUIS applications to CLU for continued support and multilingual capabilities.**
+
+### What is Intent Recognition?
+Intent recognition determines what a user wants to do based on speech or text input. It enables applications to interpret commands like **"book a flight"**, **"turn on the lamp"**, or **"check the weather"**. There are two primary approaches:
+
+#### **Pattern Matching**
+- Uses strict rules to recognize intents based on **exact phrases**.
+- Best for **predictable** speech patterns (e.g., **"Go to floor seven"**).
+- Implemented via **Speech SDK**, works **offline**.
+- Ideal for **controlled environments** where specific phrases trigger actions.
+
+### **Conversational Language Understanding (CLU)**
+- Uses **machine learning** to interpret **intent** and extract **entities** from natural language.
+- Requires both **Speech** and **Language** resources in Azure.
+- Best for **dynamic, multilingual, and complex inputs**.
+
+### **Pattern Matching vs. Exact Phrases**
+- **Exact Phrase**: Must match **word-for-word**.
+- **Pattern Matching**: Uses `{}` placeholders for **entities** (e.g., **"Take me to floor {floorName}"**).
+
+#### **Types of Entities**
+- **Any Entity**: Matches any text input in that slot.
+- **List Entity**: Predefined values, with **Strict** (must match) or **Fuzzy** (accepts variations).
+- **Prebuilt Integer**: Only recognizes **numeric values**.
+- **Entity Roles**: Differentiates similar values (e.g., `{city:from}` and `{city:destination}`).
+
+### **Grouping Required & Optional Words**
+- **Required (`()`)**: Must be in the phrase.
+- **Optional (`[]`)**: Can be omitted.
+  - Example: `"(Bring | Take) me [to | the] {floorName} [please]"`.
+
+
+### **When to Use What?**
+| Feature | Pattern Matching | CLU |
+|---------|----------------|-----|
+| **Strict input control** | ✅ Yes | ❌ No |
+| **Flexible language understanding** | ❌ No | ✅ Yes |
+| **Offline use** | ✅ Yes | ❌ No |
+| **Multi-language support** | ❌ Limited | ✅ Yes |
+| **Machine Learning-based** | ❌ No | ✅ Yes |
+
