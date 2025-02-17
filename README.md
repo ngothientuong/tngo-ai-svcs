@@ -71,12 +71,15 @@ Follow these steps to install the Azure Speech SDK:
 
 1. **Run the installation script for Speech SDK**
 
-Navigate to the `prerequisites/azure_speech_sdk` directory and run the `install_speech_sdk.sh` script where go mod is with `require github.com/Microsoft/cognitive-services-speech-sdk-go v1.33.0`:
+Navigate to the `prerequisite/azure_speech_sdk` directory and run the `install_speech_sdk.sh` script where go mod is with `require github.com/Microsoft/cognitive-services-speech-sdk-go v1.33.0`:
 
 ```sh
-cd prerequisites/azure_speech_sdk
+cd prerequisite/azure_speech_sdk
 ./install_speech_sdk.sh
 source ~/.bashrc
+
+cd prerequisite/azure_ai
+./install_python_ai.sh
 ```
 
 2. **Install yt-dlp python package**
