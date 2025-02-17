@@ -456,3 +456,65 @@ Intent recognition determines what a user wants to do based on speech or text in
 | **Multi-language support** | ❌ Limited | ✅ Yes |
 | **Machine Learning-based** | ❌ No | ✅ Yes |
 
+## **Keyword Recognition**
+
+**Keyword recognition** (or **keyword spotting**) detects a specific **word or phrase** within audio, commonly used for **voice activation** (e.g., "Hey Cortana"). It acts as a **privacy boundary**, ensuring only relevant user audio is processed.
+
+### **Multi-Stage System**
+- **Edge and cloud processing**: Audio is only processed further if prior stages detect the keyword.
+- **Accuracy metrics**:
+  - **Correct Accept Rate** (true positive) – Keyword correctly detected.
+  - **False Accept Rate** (false positive) – Non-keyword mistakenly recognized.
+
+### **Custom Keyword for On-Device Models**
+- **Speech Studio** allows generating **custom keyword models** for local execution.
+- **Two model types**:
+  - **Basic** – Fast prototyping, lower accuracy.
+  - **Advanced** – Trained with simulated data for improved accuracy (up to 48-hour processing).
+
+- **Pronunciation Selection**:
+  - Users **select correct variations** for better accuracy.
+  - More pronunciations = **higher false accepts**.
+  - Fewer pronunciations = **lower correct accepts**.
+
+### **Keyword Verification**
+- **Cloud-based verification** **reduces false accepts** using robust models.
+- **Parallel Processing with Speech-to-Text (STT)**:
+  - No extra **latency** for STT results.
+  - Ensures **keyword is prefixed** in recognized text.
+  - Increases **pause tolerance** (up to 5s) after keyword before terminating speech input.
+
+### **Keyword Verification Responses**
+- **Accepted** – Keyword confirmed.
+- **Rejected** – Keyword not detected (higher latency due to extended processing).
+
+- **Default processing limit**: 2 seconds of audio.
+- **If keyword isn't found**, service times out and returns **rejected**.
+
+### **Speech SDK Integration**
+- **Automatically integrates**:
+  - On-device keyword models.
+  - Keyword verification.
+  - Speech-to-text.
+
+- **Two scenarios**:
+  - **End-to-end keyword recognition with STT** – Full pipeline for connected devices.
+  - **Offline keyword recognition** – On-device processing without cloud dependency.
+
+
+<h2 style="color:Green; font-family:cursive; font-weight:bold; text-align:left;">Translator Service</h2>
+
+## **Azure Text Translation**
+
+Azure **Text Translation** is a cloud-based **REST API** feature of the **Translator service** that uses **neural machine translation (NMT)** for **real-time, accurate** text translation across multiple languages.
+
+### **Core Features**
+- **Languages API** – Retrieves supported languages for **Translation, Transliteration, and Dictionary Lookup** (No authentication required).
+- **Translate API** – Converts **single-source text** into **multiple target languages** in a single request.
+- **Transliterate API** – Converts **characters from one script** to another within the same language.
+- **Detect API** – Identifies the source language and determines **text translation compatibility**.
+- **Dictionary Lookup API** – Provides **equivalent words** for a source term in the target language.
+- **Dictionary Example API** – Returns **grammatical structure and contextual examples** for word usage.
+
+> **Note**: Translation, Transliteration, and Language Detection **can be performed in a single API call**.
+
