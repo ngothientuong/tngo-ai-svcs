@@ -154,3 +154,16 @@ source .env
 ```
 
 You can now proceed with running your application using the configured Azure resources and service principal.
+
+## Azure Cloud Permission
+
+### Assign Managed Identities to a `source` resource
+- When creating a resource such as AI Services, AI Foundry, Kubernetes..., you're often asked to create a system managed identity or user assign existing user managed identity to the `destination` resource.
+- What it means is that those resources can utilize those managed identities to access OTHER Azure resources such as Storage Account, Container Registry...
+
+### RBAC - Allow `source` Azure resource or `nonInteractive cli service principal (app)` to access `destination` resource via Managed identities
+- At the `destination` resource such as Storage Account, Container Registry, Key Vault, you'll have to perform role assignment with the below rule:
+  - `Role` relating to the resource such as `Storage Account Contributor` role for `Storage Account`, `Key Vault Administrator` role in `Key Vault`
+  - `Who` is given the above `Role`:
+    - `Source` resource to this `destination` resource: the user managed identities or system managed identities. Meaning those source resource assigned with these managed identities can obtain the role associating with this dest resource
+    - `NonInteractive cli`: service principal (app)
