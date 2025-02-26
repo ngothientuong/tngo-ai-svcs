@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/joho/godotenv"
 	"github.com/ngothientuong/tngo-ai-svcs/internal/ai/translator"
@@ -32,7 +33,7 @@ func main() {
 	client := translator.NewDocumentTranslationClient(endpoint, key, region, apiVersion)
 
 	// Define command-line flags
-	action := flag.String("action", "", "Action to perform (translate-document, start-batch-translation, get-translation-status)")
+	action := flag.String("action", "", "Action to perform (translate-document, start-batch-translation, get-translation-status, get-documents-status, get-document-status)")
 	documentPath := flag.String("document", "", "Path to the document to translate")
 	targetLanguage := flag.String("target-language", "", "Target language for translation")
 	sourceLanguage := flag.String("source-language", "", "Source language for translation (optional)")
@@ -42,8 +43,30 @@ func main() {
 	category := flag.String("category", "generalnn", "Category for translation (optional)")
 	sourceContainer := flag.String("source-container", "", "Source container for batch translation")
 	targetContainer := flag.String("target-container", "", "Target container for batch translation")
+	prefix := flag.String("prefix", "", "Prefix filter for source documents")
+	suffix := flag.String("suffix", "", "Suffix filter for source documents")
+	storageType := flag.String("storage-type", "Folder", "Storage type for input documents (Folder or File)")
+	glossaries := flag.String("glossaries", "", "Comma-separated list of glossaries in the format glossaryUrl,format,version")
 	batchID := flag.String("batch-id", "", "Batch ID for checking translation status")
+	documentID := flag.String("document-id", "", "Document ID for checking document status")
 	flag.Parse()
+
+	// Parse glossaries
+	var glossaryList []map[string]string
+	if *glossaries != "" {
+		glossaryItems := strings.Split(*glossaries, ",")
+		for _, item := range glossaryItems {
+			parts := strings.Split(item, ",")
+			if len(parts) == 3 {
+				glossaryList = append(glossaryList, map[string]string{
+					"glossaryUrl":   parts[0],
+					"format":        parts[1],
+					"version":       parts[2],
+					"storageSource": "AzureBlob",
+				})
+			}
+		}
+	}
 
 	// Perform the requested action
 	switch *action {
@@ -56,7 +79,7 @@ func main() {
 		if *sourceContainer == "" || *targetContainer == "" || *targetLanguage == "" {
 			log.Fatalf("Missing required parameters for start-batch-translation action. Example usage: go run translatordocument_cmd.go -action start-batch-translation -source-container source-container-url -target-container target-container-url -target-language fr")
 		}
-		result, err := client.StartBatchTranslation(*sourceContainer, *targetContainer, *targetLanguage)
+		result, err := client.StartBatchTranslation(*sourceContainer, *targetContainer, *targetLanguage, *prefix, *suffix, *sourceLanguage, *storageType, glossaryList)
 		if err != nil {
 			log.Fatalf("Error performing action: %v", err)
 		}
@@ -70,8 +93,26 @@ func main() {
 			log.Fatalf("Error performing action: %v", err)
 		}
 		fmt.Printf("Result: %s\n", result)
+	case "get-documents-status":
+		if *batchID == "" {
+			log.Fatalf("Missing required parameters for get-documents-status action. Example usage: go run translatordocument_cmd.go -action get-documents-status -batch-id batch-id")
+		}
+		result, err := client.GetDocumentsStatus(*batchID)
+		if err != nil {
+			log.Fatalf("Error performing action: %v", err)
+		}
+		fmt.Printf("Result: %s\n", result)
+	case "get-document-status":
+		if *batchID == "" || *documentID == "" {
+			log.Fatalf("Missing required parameters for get-document-status action. Example usage: go run translatordocument_cmd.go -action get-document-status -batch-id batch-id -document-id document-id")
+		}
+		result, err := client.GetDocumentStatus(*batchID, *documentID)
+		if err != nil {
+			log.Fatalf("Error performing action: %v", err)
+		}
+		fmt.Printf("Result: %s\n", result)
 	default:
-		log.Fatalf("Invalid action specified. Example usage: go run translatordocument_cmd.go -action translate-document -document /path/to/document -target-language fr -output /path/to/output")
+		log.Fatalf("Invalid action specified. Example usage: go run translatordocument_cmd.go -action get-translation-status -batch-id batch-id")
 	}
 
 	if err != nil {
