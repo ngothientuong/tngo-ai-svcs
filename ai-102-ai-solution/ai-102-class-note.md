@@ -518,3 +518,16 @@ Azure **Text Translation** is a cloud-based **REST API** feature of the **Transl
 
 > **Note**: Translation, Transliteration, and Language Detection **can be performed in a single API call**.
 
+## **Azure Document Translation**
+
+Azure **Document Translation** is a cloud-based machine translation feature of the **Azure AI Translator service**. It allows you to translate multiple and complex documents across all supported languages and dialects while preserving the original document structure and data format. The Document Translation API supports two translation processes:
+
+### **Asynchronous Batch Translation**
+- Supports the processing of multiple documents and large files.
+- Requires an Azure Blob storage account with storage containers for your source and translated documents.
+
+### **Synchronous Single File Translation**
+- Supports the processing of single file translations.
+- Does not require an Azure Blob storage account.
+- The final response contains the translated document and is returned directly to the calling client.
+
