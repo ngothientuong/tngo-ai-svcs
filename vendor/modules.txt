@@ -1,4 +1,4 @@
-# github.com/Microsoft/cognitive-services-speech-sdk-go v1.33.0
+# github.com/Microsoft/cognitive-services-speech-sdk-go v1.33.0 => github.com/Microsoft/cognitive-services-speech-sdk-go v0.0.0-20250225193958-1f1d5d41a9bb
 ## explicit; go 1.13
 github.com/Microsoft/cognitive-services-speech-sdk-go/audio
 github.com/Microsoft/cognitive-services-speech-sdk-go/common
@@ -9,3 +9,4 @@ github.com/google/uuid
 # github.com/joho/godotenv v1.5.1
 ## explicit; go 1.12
 github.com/joho/godotenv
+# github.com/Microsoft/cognitive-services-speech-sdk-go => github.com/Microsoft/cognitive-services-speech-sdk-go v0.0.0-20250225193958-1f1d5d41a9bb

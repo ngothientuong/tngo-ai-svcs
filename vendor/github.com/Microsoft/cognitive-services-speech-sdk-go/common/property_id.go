@@ -70,6 +70,10 @@ const (
 	// The SDK is using it internally.
 	SpeechServiceConnectionURL PropertyID = 1104
 
+	// Specifies the list of hosts for which proxies should not be used. This setting overrides all other configurations.
+	// Hostnames are separated by commas and are matched in a case-insensitive manner. Wildcards are not supported.
+	SpeechServiceConnectionProxyHostBypass PropertyID = 1105
+
 	// SpeechServiceConnectionTranslationToLanguages is the list of comma separated languages used as target translation
 	// languages. Under normal circumstances, you shouldn't have to use this property directly.
 	// Instead use SpeechTranslationConfig.AddTargetLanguage and SpeechTranslationConfig.GetTargetLanguages.
@@ -304,6 +308,25 @@ const (
 	// For more information about timeout configuration that includes discussion of default behaviors, please visit
 	// https://aka.ms/csspeech/timeouts.
 	SegmentationSilenceTimeoutMs PropertyID = 9002
+
+	// SegmentationMaximumTimeMs represents the maximum length of a spoken phrase when using the Time segmentation strategy.
+	// As the length of a spoken phrase approaches this value, the SegmentationSilenceTimeoutMs will be reduced until either 
+	// the phrase silence timeout is reached or the phrase reaches the maximum length.
+	SegmentationMaximumTimeMs PropertyID = 9003
+
+	// SegmentationStrategy defines the strategy used to determine when a spoken phrase has ended and a final Recognized result should be generated.
+	// Allowed values are "Default", "Time", and "Semantic".
+	//
+	// Valid values:
+	// - "Default": Uses the default strategy and settings as determined by the Speech Service. Suitable for most situations.
+	// - "Time": Uses a time-based strategy where the amount of silence between speech determines when to generate a final result.
+	// - "Semantic": Uses an AI model to determine the end of a spoken phrase based on the phrase's content.
+	//
+	// Additional Notes:
+	// - When using the Time strategy, SegmentationSilenceTimeoutMs can be adjusted to modify the required silence duration for ending a phrase, 
+	//   and SegmentationMaximumTimeMs can be adjusted to set the maximum length of a spoken phrase.
+	// - The Semantic strategy does not have any adjustable properties.
+	SegmentationStrategy PropertyID = 9004
 
 	// ConversationApplicationID is the identifier used to connect to the backend service.
 	ConversationApplicationID PropertyID = 10000

@@ -531,3 +531,23 @@ Azure **Document Translation** is a cloud-based machine translation feature of t
 - Does not require an Azure Blob storage account.
 - The final response contains the translated document and is returned directly to the calling client.
 
+## **Custom Translator**
+
+Custom Translator is a feature of the **Azure AI Translator service**, which enables enterprises, app developers, and language service providers to build customized neural machine translation (NMT) systems. The customized translation systems seamlessly integrate into existing applications, workflows, and websites.
+
+Translation systems built with Custom Translator are available through **Microsoft Translator Text API V3**, the same cloud-based, secure, high-performance system powering billions of translations every day.
+
+### **Features**
+- **Apply neural machine translation technology**: Improve your translation by applying NMT provided by Custom Translator.
+- **Build systems that know your business terminology**: Customize and build translation systems using parallel documents that understand the terminologies used in your own business and industry.
+- **Use a dictionary to build your models**: Train a model with only dictionary data if you don't have a training data set.
+- **Collaborate with others**: Share your work with different people to collaborate with your team.
+- **Access your custom translation model**: Access your custom translation model anytime using your existing applications/programs via Microsoft Translator Text API V3.
+
+### **Get Better Translations**
+- **Neural Machine Translation (NMT)**: Provides higher quality, more human-sounding, and more fluent translations by capturing the context of full sentences before translating them.
+- **Use previously translated documents**: Build a translation system using documents that include domain-specific terminology and style.
+- **Parallel data support**: Accepts data that's parallel at the document level to make data collection and preparation more effective.
+- **BLEU score gains**: It's not uncommon to see BLEU score gains between 5 and 10 points by using Custom Translator with appropriate training data.
+
+## Translate Speech-To-Speech - Azure AI Speech Service
