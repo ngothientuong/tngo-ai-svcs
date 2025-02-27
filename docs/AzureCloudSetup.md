@@ -192,7 +192,7 @@ Assign all required API permissions, including Microsoft Graph and Azure Service
     az role assignment list --all --query "[].{Principal:principalName, Role:roleDefinitionName, Scope:scope, Type:principalType}" -o table
 
 #### **View Role Assignments for a Specific Identity**
-    az role assignment list --all --assignee "<IDENTITY_OBJECT_ID (or PRINCIPAL ID)>" --query "[].{Role:roleDefinitionName, Scope:scope}" -o table
+    az role assignment list --all --assignee "<IDENTITY_OBJECT_ID>" --query "[].{Role:roleDefinitionName, Scope:scope}" -o table
 
 ---
 
