@@ -77,7 +77,8 @@ func main() {
 		err = client.TranslateDocument(*documentPath, *targetLanguage, *sourceLanguage, *glossaryPath, *outputFilePath, *allowFallback, *category)
 	case "start-batch-translation":
 		if *sourceContainer == "" || *targetContainer == "" || *targetLanguage == "" {
-			log.Fatalf("Missing required parameters for start-batch-translation action. Example usage: go run translatordocument_cmd.go -action start-batch-translation -source-container source-container-url -target-container target-container-url -target-language fr")
+			log.Println(`Requires: 1. enablement of system-managed identity of the AI Services; 2. Role assignment to Storage Blob Data Contributor to the system-managed identity; 3. Storage account with a container for the source documents having folder name "{folderName}" for --prefix flag and files in the folder with name ending with ".pdf" for --suffix flag and a target container for the translated documents.`)
+			log.Fatalf(`Missing required parameters for start-batch-translation action. Example usage: go run translatordocument_cmd.go -action start-batch-translation -source-container https://tngodemo1storageaccount.blob.core.windows.net/tngodemo1translator -target-container https://tngodemo1storageaccount.blob.core.windows.net/tngodemo1translateddocuments  -target-language vi --prefix 'demotranslator/' --suffix ".pdf" --storage-type "Folder"`)
 		}
 		result, err := client.StartBatchTranslation(*sourceContainer, *targetContainer, *targetLanguage, *prefix, *suffix, *sourceLanguage, *storageType, glossaryList)
 		if err != nil {
