@@ -211,4 +211,9 @@ Assign all required API permissions, including Microsoft Graph and Azure Service
 | `    az role assignment list --all --query "[].{ObjectID_OR_PrincipalID:principalId, PrincipalType:principalType, Role:roleDefinitionName, Scope:scope}" -o table --assignee <IDENTITY_OBJECT_ID>` | View **role assignments** for a specific **User/SP/Identity** |
 | `    az ad sp show --id $(az account show --query "user.name" -o tsv) -o table` | View current logged in **Service Principal (SP)** |
 | `    az role assignment list --all --assignee $(az ad sp list --filter "appId eq '$(az account show --query user.name -o tsv)'" --query "[].id" -o tsv) --query "[].{ObjectID_OR_PrincipalID:principalId, PrincipalType:principalType, Role:roleDefinitionName, Scope:scope}" -o table` | Current role assignment list for logged in **Service Principal (SP)** |
+| `    azmsi` | `Short hand` for List **all Managed Identities**|
+| `    azself` | `Short Hand` for showing **logged in user info** |
+| `    azmsiroles ${1}` | `Short hand` for showing **role assignments** of msi with name alias **${1}** such as `tngosa` |
+| `    azselfroles` | `Short hand` for showing **role assignments** of logged in user|
+| `    azallmsiroles` | `Short hand` for showing listing all **role assignments** of **all msi** |
 ---
