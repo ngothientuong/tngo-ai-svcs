@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Translator</title>
+</head>
+
+<body>
+  <h1>Speech Translator</h1>
+  <button id="startButton">Start Chat</button>
+  <button id="stopButton">Stop Chat</button>
+
+  <h2>Translation Mode:</h2>
+  <select id="modeSelect">
+    <option value="both">Text + Speech</option>
+    <option value="text-only">Text Only</option>
+    <option value="speech-only">Speech Only</option>
+  </select>
+
+  <h2>Translated Text:</h2>
+  <p id="translatedText">Waiting for translation...</p>
+
+  <script>
+    let socket;
+
+    document.getElementById('startButton').addEventListener('click', () => {
+      fetch('/start').then(response => response.text()).then(alert);
+      socket = new WebSocket("ws://localhost:8080/ws");
+      socket.onmessage = event => document.getElementById("translatedText").innerText = event.data;
+    });
+
+    document.getElementById('stopButton').addEventListener('click', () => {
+      fetch('/stop').then(response => response.text()).then(alert);
+      if (socket) socket.close();
+    });
+
+    document.getElementById('modeSelect').addEventListener('change', () => {
+      if (socket) socket.send(JSON.stringify({ mode: document.getElementById('modeSelect').value }));
+    });
+  </script>
+</body>
+
+</html>

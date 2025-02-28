@@ -27,7 +27,7 @@ type ModeChangeRequest struct {
 
 func main() {
 	// Load environment variables
-	err := godotenv.Load(".env")
+	err := godotenv.Load("/home/tngo/ngo/projects/tngo-ai-svcs/.env")
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}
@@ -96,6 +96,7 @@ func main() {
 		mu.Lock()
 		defer mu.Unlock()
 
+		// Send stop signal to recognizer
 		err := speech.StopSpeechRecognition()
 		if err != nil {
 			http.Error(w, "Failed to stop recognition", http.StatusInternalServerError)
