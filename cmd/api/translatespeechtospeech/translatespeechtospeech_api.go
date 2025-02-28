@@ -8,6 +8,7 @@ import (
 	"os"
 	"sync"
 
+	"github.com/gordonklaus/portaudio"
 	"github.com/gorilla/websocket"
 	"github.com/joho/godotenv"
 	"github.com/ngothientuong/tngo-ai-svcs/internal/ai/speech"
@@ -37,6 +38,23 @@ func main() {
 	speechRegion := os.Getenv("SPEECH_REGION")
 	translationKey := os.Getenv("TRANSLATION_KEY")
 	translationEndpoint := os.Getenv("TRANSLATION_ENDPOINT")
+
+	err = portaudio.Initialize()
+	if err != nil {
+		log.Fatalf("Error initializing PortAudio: %v", err)
+	}
+	defer portaudio.Terminate()
+
+	// List available audio devices
+	devices, err := portaudio.Devices()
+	if err != nil {
+		log.Fatalf("Error getting audio devices: %v", err)
+	}
+
+	fmt.Println("Available Audio Devices:")
+	for i, dev := range devices {
+		fmt.Printf("%d: %s (Input: %d, Output: %d)\n", i, dev.Name, dev.MaxInputChannels, dev.MaxOutputChannels)
+	}
 
 	// Serve Web Interface
 	fs := http.FileServer(http.Dir("./static"))
