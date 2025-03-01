@@ -1,9 +1,9 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install build-essential ca-certificates libasound2-dev libssl-dev wget -y
+sudo apt-get install build-essential ca-certificates libasound2-dev libssl-dev net-tools -y
 # Live Streaming
-sudo apt install ffmpeg -y
+sudo apt install ffmpeg alsa-utils -y
 # Ensure to install `python ahead of time!`
 pip install yt-dlp
 
