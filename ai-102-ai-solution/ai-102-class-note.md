@@ -551,3 +551,19 @@ Translation systems built with Custom Translator are available through **Microso
 - **BLEU score gains**: It's not uncommon to see BLEU score gains between 5 and 10 points by using Custom Translator with appropriate training data.
 
 ## Translate Speech-To-Speech - Azure AI Speech Service
+
+- **Speech Translation Overview**: :
+    - **Real-time, multi-language translation**: Supports both speech-to-text and speech-to-speech translation of audio streams.
+    - **Interim results**: Provides immediate transcription and translation as speech is detected.
+    - **Synthesized speech output**: Converts final translated text into natural-sounding speech using a variety of pretrained voices.
+- **Core Features**:
+    - **Speech-to-Text Translation**: Transcribes spoken input in the source language and translates it into text in the target language.
+    - **Speech-to-Speech Translation**: Translates spoken input and synthesizes the translation into spoken output in the target language.
+    - **Multilingual Speech Translation**:
+        - **Unspecified input language**: Automatically detects and translates speech without prior specification of the input language.
+        - **Language switching**: Handles multiple languages spoken within the same session, translating all into the designated target language without session restarts.
+        - **Transcription**: Outputs translations as text in the target language; source language transcription is currently unavailable.
+    - **Multiple Target Languages Translation**: Allows translation of input speech into two target languages simultaneously within a single API call; additional languages can be accommodated using separate services.
+- **Use Cases**:
+    - **Travel Interpreter**: Facilitates communication between travelers and locals by translating speech to and from the local language.
+    - **Business Meetings**: Enables seamless communication among participants speaking different languages, eliminating language barriers.
