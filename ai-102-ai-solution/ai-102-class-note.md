@@ -567,3 +567,61 @@ Translation systems built with Custom Translator are available through **Microso
 - **Use Cases**:
     - **Travel Interpreter**: Facilitates communication between travelers and locals by translating speech to and from the local language.
     - **Business Meetings**: Enables seamless communication among participants speaking different languages, eliminating language barriers.
+
+
+<h2 style="color:Green; font-family:cursive; font-weight:bold; text-align:left;">Conversational Language Understanding</h2>
+
+# Conversational Language Understanding (CLU) Overview
+- **Purpose**: Enable apps to interpret user input and derive intents/entities.
+- **Key Use Cases**: Virtual assistants, chatbots, help desk, IVR systems.
+- **Data Flow**:
+    1. User speaks or types query.
+    2. CLU identifies **intent** and **entities**.
+    3. App processes results to deliver relevant responses.
+
+## Orchestration Workflow
+- **What It Is**: A project type in Language Service to route user queries to various language components (like QnA, LUIS, CLU, or custom text analytics).
+- **Key Benefit**: Centralized logic to decide which underlying model or service to call based on the user’s utterance.
+
+### Create an Orchestration Project
+1. **Sign in** to Language Studio.
+2. **Create new project** → Select "Orchestration workflow".
+3. **Configure** name, resource, and language.
+4. **Add intents** pointing to existing Language resources (CLU, QnA, etc.).
+
+### Build Schema
+- **Schema** defines the utterances and their mapping to target services.
+- **Intent**: Represents a purpose (e.g., "BookFlight" or "FAQ").
+- **Service Connection**: Each intent links to a connected service (CLU, QnA, etc.).
+- **Utterances**: Sample user expressions aligned to each intent.
+
+### Tag Utterances
+- **Manual Labeling**: Assign each example utterance to the correct intent.
+- **Guidelines**: Use relevant, diverse examples to improve accuracy.
+
+### Train the Model
+- **One-Click Training** in Language Studio.
+- **Tips**:
+  - Provide enough labeled utterances for each intent.
+  - Avoid overlapping or ambiguous utterances across intents.
+
+### View Model Evaluation
+- **Metrics**: Precision, Recall, F1 Score for each intent.
+- **Goal**: Identify weaknesses and refine utterances or add more data.
+
+### Deploy the Model
+- **Deployment Slot**: Typically a “Production” or “Staging” environment.
+- **Manual or CI/CD**: Optionally integrate with release pipelines.
+
+### Calling the Orchestration API
+- **Endpoint**: Use the Language Service endpoint + Orchestration workflow path.
+- **Headers**: Provide subscription key or bearer token.
+- **Request**: Send user utterance; the response includes the predicted intent and the corresponding service results.
+
+## Fail Over (High Availability)
+- **Fail-Over Mechanism**:
+    - Create CLU resources in multiple regions.
+    - Use **secondary endpoints** if the primary region fails.
+    - Update connections to point to backup resources with minimal downtime.
+
+
